@@ -36,7 +36,7 @@
 			<div class="nav-link">Sync</div>
 			<div class="nav-link">API</div>
 			<div class="nav-link">About</div>
-			<div class="nav-link" style="margin-top: -3px;">
+			<div class="nav-link theme-switch">
 				<button type="button" on:click={toggle}>
 					<div class="hide-if-light">
 						<SunIcon />
@@ -121,12 +121,15 @@
 			margin: 0 1em;
 		}
 		.nav-link {
-			padding: 1em;
+			margin: 1em;
 		}
 		footer {
 			display: flex;
 			column-gap: 1em;
 			justify-content: center;
+		}
+		.theme-switch {
+			margin-top: calc(1em - 4px);
 		}
 	}
 </style>
