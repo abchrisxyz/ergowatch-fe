@@ -1,6 +1,10 @@
 <script>
 	import './styles.css';
-	import { MoonIcon } from 'svelte-feather-icons';
+	import { MoonIcon, SunIcon } from 'svelte-feather-icons';
+
+	function toggle() {
+		window.document.body.classList.toggle('alter-theme');
+	}
 </script>
 
 <div class="layout">
@@ -33,7 +37,14 @@
 			<div class="nav-link">API</div>
 			<div class="nav-link">About</div>
 			<div class="nav-link" style="margin-top: -3px;">
-				<MoonIcon />
+				<button type="button" on:click={toggle}>
+					<div class="hide-if-light">
+						<SunIcon />
+					</div>
+					<div class="hide-if-dark">
+						<MoonIcon />
+					</div>
+				</button>
 			</div>
 		</div>
 	</nav>
@@ -83,7 +94,12 @@
 		border-top: 1px solid gainsboro;
 		padding: 1em;
 	}
-
+	nav button {
+		color: var(--text-color);
+		background-color: var(--surface-color-1);
+		border: none;
+		cursor: pointer;
+	}
 	@media (min-width: 770px) {
 		.layout {
 			grid-template-columns: 200px 1fr;

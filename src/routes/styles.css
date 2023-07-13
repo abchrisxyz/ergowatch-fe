@@ -1,8 +1,73 @@
 :root {
-    font-family: 'Inter', sans-serif;
+    /* light theme */
+    --text-color-light: black;
+    --surface-color-1-light: #fff;
+
+    /* dark theme */
+    --text-color-dark: #eee;
+    --surface-color-1-dark: #121212;
 }
 
 body {
+    --text-color: var(--text-color-light);
+    --bkg-color: var(--surface-color-1-light);
+}
+
+body.alter-theme {
+    --text-color: var(--text-color-dark);
+    --bkg-color: var(--surface-color-1-dark);
+}
+
+.hide-if-light {
+    display: none;
+}
+
+.hide-if-dark {
+    display: block;
+}
+
+.alter-theme .hide-if-light {
+    display: block;
+}
+
+.alter-theme .hide-if-dark {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        --text-color: var(--text-color-dark);
+        --bkg-color: var(--surface-color-1-dark);
+    }
+
+    body.alter-theme {
+        --text-color: var(--text-color-light);
+        --bkg-color: var(--surface-color-1-light);
+    }
+
+    .hide-if-dark {
+        display: none
+    }
+
+    .hide-if-light {
+        display: block;
+    }
+
+    .alter-theme .hide-if-light {
+        display: none;
+    }
+
+    .alter-theme .hide-if-dark {
+        display: block;
+    }
+
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background: var(--bkg-color);
     margin: 0;
     padding: 0;
 }
