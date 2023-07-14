@@ -136,7 +136,7 @@
 		justify-content: center;
 	}
 
-	@media (min-width: 770px) {
+	@media (min-width: 840px) {
 		.layout {
 			grid-template-columns: max-content 1fr;
 			grid-template-rows: max-content minmax(calc(100vh - 3em), max-content) max-content;
