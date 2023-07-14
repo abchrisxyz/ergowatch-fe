@@ -1,15 +1,23 @@
 <script>
 	import './styles.css';
-	import { page } from '$app/stores';
 	import { MoonIcon, SunIcon, MenuIcon } from 'svelte-feather-icons';
+	import NavLink from './NavLink.svelte';
 
-	let burger = false;
+	let burgerMenuIsOpen = false;
 
+	// Open/Close the mobile menu
 	function toggleMenu() {
-		burger = !burger;
+		burgerMenuIsOpen = !burgerMenuIsOpen;
 		window.document.body.classList.toggle('burger-menu');
 	}
 
+	// When clicking a nav menu item in mobile mode, close the menu.
+	function closeMobileMenu() {
+		if (burgerMenuIsOpen) toggleMenu();
+	}
+	const onNavLinkClick = closeMobileMenu;
+
+	// Change the color theme
 	function toggleTheme() {
 		window.document.body.classList.toggle('alter-theme');
 	}
@@ -17,37 +25,23 @@
 
 <div class="layout">
 	<header>
-		<div><a href="/">ErgoWatch</a></div>
+		<div><a href="/" on:click={closeMobileMenu}>ErgoWatch</a></div>
 		<button id="nav-burger" on:click={toggleMenu}>
 			<MenuIcon />
 		</button>
 	</header>
 	<nav>
 		<div class="nav-group">
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/dashboards')}>
-				<a href="dashboards" on:click={() => burger && toggleMenu()}>Dashboards</a>
-			</div>
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/charts')}>
-				<a href="charts" on:click={() => burger && toggleMenu()}>Charts</a>
-			</div>
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/lists')}>
-				<a href="lists" on:click={() => burger && toggleMenu()}>Lists</a>
-			</div>
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/tools')}>
-				<a href="tools" on:click={() => burger && toggleMenu()}>Tools</a>
-			</div>
+			<NavLink href="/dashboards" name="Dashboards" {onNavLinkClick} />
+			<NavLink href="/charts" name="Charts" {onNavLinkClick} />
+			<NavLink href="/lists" name="Lists" {onNavLinkClick} />
+			<NavLink href="/tools" name="Tools" {onNavLinkClick} />
 		</div>
 		<div class="nav-group">
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/sync')}>
-				<a href="sync" on:click={() => burger && toggleMenu()}>Sync</a>
-			</div>
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/api')}>
-				<a href="api" on:click={() => burger && toggleMenu()}>API</a>
-			</div>
-			<div class="nav-link" class:active={$page.route.id?.startsWith('/about')}>
-				<a href="about" on:click={() => burger && toggleMenu()}>About</a>
-			</div>
-			<div class="nav-link theme-switch">
+			<NavLink href="/sync" name="Sync" {onNavLinkClick} />
+			<NavLink href="/api" name="API" {onNavLinkClick} />
+			<NavLink href="/about" name="About" {onNavLinkClick} />
+			<div class="theme-switch">
 				<button type="button" on:click={toggleTheme}>
 					<div class="hide-if-light">
 						<SunIcon />
@@ -102,12 +96,7 @@
 		grid-area: nav;
 		display: none;
 	}
-	.nav-link:hover {
-		color: orange;
-		cursor: pointer;
-	}
-	header a,
-	nav a {
+	header a {
 		text-decoration: none;
 		color: inherit;
 	}
@@ -127,11 +116,8 @@
 		cursor: pointer;
 		padding: 0;
 	}
-	.nav-link {
+	.theme-switch {
 		margin: 1em;
-	}
-	.nav-link.active {
-		color: orange;
 	}
 	footer {
 		display: flex;
@@ -141,7 +127,7 @@
 
 	@media (min-width: 770px) {
 		.layout {
-			grid-template-columns: 200px 1fr;
+			grid-template-columns: max-content 1fr;
 			grid-template-rows: max-content minmax(calc(100vh - 3em), max-content) max-content;
 			grid-template-areas:
 				'header nav'
@@ -160,6 +146,7 @@
 			margin: 0 1em;
 		}
 		.theme-switch {
+			margin: 1em;
 			margin-top: calc(1em - 4px);
 		}
 	}
