@@ -88,7 +88,7 @@
 	}
 	header {
 		grid-area: header;
-		padding: 1em;
+		margin: 1em;
 		display: flex;
 		justify-content: space-between;
 	}
