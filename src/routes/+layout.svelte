@@ -116,8 +116,9 @@
 	}
 	footer {
 		grid-area: footer;
-		border-top: 1px solid gainsboro;
+		border-top: 1px solid var(--border);
 		padding: 1em;
+		background-color: var(--surface-color-1);
 	}
 	header button,
 	nav button {

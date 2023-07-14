@@ -1,11 +1,21 @@
 :root {
     /* light theme */
     --text-color-light: black;
+    --text-color-2-light: hsl(0, 0%, 60%);
     --surface-color-1-light: #fff;
+    --surface-color-2-light: hsl(40, 5%, 97%);
+    --border-light: gainsboro;
 
     /* dark theme */
-    --text-color-dark: #eee;
-    --surface-color-1-dark: #121212;
+    --text-color-dark: hsl(0, 0%, 93%);
+    --text-color-2-dark: hsl(0, 0%, 85%);
+    --surface-color-1-dark: hsl(0, 0%, 15%);
+    --surface-color-2-dark: hsl(0, 0%, 7%);
+    --border-dark: hsl(0, 0%, 20%);
+
+
+
+}
 
 * {
     box-sizing: border-box;
@@ -13,12 +23,18 @@
 
 body {
     --text-color: var(--text-color-light);
-    --bkg-color: var(--surface-color-1-light);
+    --text-color-2: var(--text-color-2-light);
+    --surface-color-1: var(--surface-color-1-light);
+    --surface-color-2: var(--surface-color-2-light);
+    --border: var(--border-light);
 }
 
 body.alter-theme {
     --text-color: var(--text-color-dark);
-    --bkg-color: var(--surface-color-1-dark);
+    --text-color-2: var(--text-color-2-dark);
+    --surface-color-1: var(--surface-color-1-dark);
+    --surface-color-2: var(--surface-color-2-dark);
+    --border: var(--border-dark);
 }
 
 .hide-if-light {
@@ -41,12 +57,18 @@ body.alter-theme {
 
     body {
         --text-color: var(--text-color-dark);
-        --bkg-color: var(--surface-color-1-dark);
+        --text-color-2: var(--text-color-2-dark);
+        --surface-color-1: var(--surface-color-1-dark);
+        --surface-color-2: var(--surface-color-2-dark);
+        --border: var(--border-dark);
     }
 
     body.alter-theme {
         --text-color: var(--text-color-light);
-        --bkg-color: var(--surface-color-1-light);
+        --text-color-2: var(--text-color-2-light);
+        --surface-color-1: var(--surface-color-1-light);
+        --surface-color-2: var(--surface-color-2-light);
+        --border: var(--border-light);
     }
 
     .hide-if-dark {
@@ -70,7 +92,7 @@ body.alter-theme {
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
-    background: var(--bkg-color);
+    background: var(--surface-color-1);
     margin: 0;
     padding: 0;
 }
