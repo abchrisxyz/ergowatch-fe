@@ -6,6 +6,9 @@
     /* dark theme */
     --text-color-dark: #eee;
     --surface-color-1-dark: #121212;
+
+* {
+    box-sizing: border-box;
 }
 
 body {

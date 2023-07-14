@@ -69,9 +69,9 @@
 <style>
 	.layout {
 		display: grid;
-		height: 100vh;
+		min-height: 100vh;
 		grid-template-columns: 100vw;
-		grid-template-rows: max-content minmax(calc(100vh - 3em), max-content) max-content;
+		grid-template-rows: max-content 1fr max-content;
 		grid-template-areas:
 			'header'
 			'main'
