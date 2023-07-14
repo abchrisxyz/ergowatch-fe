@@ -2,6 +2,7 @@
 	import './styles.css';
 	import { MoonIcon, SunIcon, MenuIcon } from 'svelte-feather-icons';
 	import NavLink from './NavLink.svelte';
+	import ErgoWatchLogo from '$lib/ErgoWatchLogo.svelte';
 
 	let burgerMenuIsOpen = false;
 
@@ -25,7 +26,10 @@
 
 <div class="layout">
 	<header>
-		<div><a href="/" on:click={closeMobileMenu}>ErgoWatch</a></div>
+		<a href="/" on:click={closeMobileMenu} class="logo">
+			<ErgoWatchLogo size="32" />
+			ErgoWatch
+		</a>
 		<button id="nav-burger" on:click={toggleMenu}>
 			<MenuIcon />
 		</button>
@@ -92,6 +96,13 @@
 		display: flex;
 		justify-content: space-between;
 	}
+	.logo {
+		display: flex;
+		align-items: center;
+		column-gap: 0.3em;
+		margin-right: 1em;
+		font-weight: 700;
+	}
 	nav {
 		grid-area: nav;
 		display: none;
@@ -143,11 +154,11 @@
 		}
 		.nav-group {
 			display: flex;
+			align-items: center;
 			margin: 0 1em;
 		}
 		.theme-switch {
 			margin: 1em;
-			margin-top: calc(1em - 4px);
 		}
 	}
 </style>
