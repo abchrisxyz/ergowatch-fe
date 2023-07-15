@@ -124,6 +124,9 @@
 		border-top: 1px solid var(--border);
 		padding: 1em;
 		background-color: var(--surface-color-1);
+		display: flex;
+		column-gap: 1em;
+		justify-content: center;
 	}
 	header button,
 	nav button {
@@ -135,11 +138,6 @@
 	}
 	.theme-switch {
 		margin: 1em;
-	}
-	footer {
-		display: flex;
-		column-gap: 1em;
-		justify-content: center;
 	}
 
 	@media (min-width: 840px) {
