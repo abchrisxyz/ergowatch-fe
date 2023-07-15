@@ -1,19 +1,25 @@
+/*  
+    Colors:
+    - surface 1: text background (widgets etc.)
+    - surface 2: site background
+    - surface 3: used for accents on top of surface 1
+*/
 :root {
     /* light theme */
-    --text-color-light: hsl(0, 0%, 0%);
+    --text-color-1-light: hsl(0, 0%, 0%);
     --text-color-2-light: hsl(0, 0%, 60%);
     --surface-color-1-light: hsl(0, 0%, 100%);
-    --surface-color-2-light: hsl(0, 5%, 97%);
-    --surface-color-3-light: hsl(0, 5%, 96%);
-    --border-light: gainsboro;
+    --surface-color-2-light: hsl(0, 0%, 97%);
+    --surface-color-3-light: hsl(0, 0%, 96%);
+    --border-light: hsl(0, 0%, 86%);
 
     /* dark theme */
-    --text-color-dark: hsl(0, 0%, 93%);
+    --text-color-1-dark: hsl(0, 0%, 93%);
     --text-color-2-dark: hsl(0, 0%, 70%);
-    --surface-color-1-dark: hsl(0, 0%, 15%);
-    --surface-color-2-dark: hsl(0, 0%, 7%);
-    --surface-color-3-dark: hsl(0, 0%, 25%);
-    --border-dark: hsl(0, 0%, 35%);
+    --surface-color-1-dark: hsl(0, 0%, 20%);
+    --surface-color-2-dark: hsl(0, 0%, 15%);
+    --surface-color-3-dark: hsl(0, 0%, 23%);
+    --border-dark: hsl(0, 0%, 28%);
 }
 
 * {
@@ -21,7 +27,7 @@
 }
 
 body {
-    --text-color: var(--text-color-light);
+    --text-color: var(--text-color-1-light);
     --text-color-2: var(--text-color-2-light);
     --surface-color-1: var(--surface-color-1-light);
     --surface-color-2: var(--surface-color-2-light);
@@ -30,7 +36,7 @@ body {
 }
 
 body.alter-theme {
-    --text-color: var(--text-color-dark);
+    --text-color: var(--text-color-1-dark);
     --text-color-2: var(--text-color-2-dark);
     --surface-color-1: var(--surface-color-1-dark);
     --surface-color-2: var(--surface-color-2-dark);
@@ -57,7 +63,7 @@ body.alter-theme {
 @media (prefers-color-scheme: dark) {
 
     body {
-        --text-color: var(--text-color-dark);
+        --text-color: var(--text-color-1-dark);
         --text-color-2: var(--text-color-2-dark);
         --surface-color-1: var(--surface-color-1-dark);
         --surface-color-2: var(--surface-color-2-dark);
@@ -66,7 +72,7 @@ body.alter-theme {
     }
 
     body.alter-theme {
-        --text-color: var(--text-color-light);
+        --text-color: var(--text-color-1-light);
         --text-color-2: var(--text-color-2-light);
         --surface-color-1: var(--surface-color-1-light);
         --surface-color-2: var(--surface-color-2-light);
@@ -96,7 +102,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: var(--text-color);
-    background: var(--surface-color-1);
+    background: var(--surface-color-2);
     margin: 0;
     padding: 0;
 }

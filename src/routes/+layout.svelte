@@ -92,7 +92,7 @@
 	}
 	header {
 		grid-area: header;
-		margin: 1em;
+		padding: 1em;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -117,13 +117,13 @@
 	}
 	main {
 		grid-area: main;
-		background-color: var(--surface-color-2);
+		/* background-color: var(--surface-color-2); */
 	}
 	footer {
 		grid-area: footer;
 		border-top: 1px solid var(--border);
 		padding: 1em;
-		background-color: var(--surface-color-1);
+		/* background-color: var(--surface-color-1); */
 		display: flex;
 		column-gap: 1em;
 		justify-content: center;
@@ -131,7 +131,7 @@
 	header button,
 	nav button {
 		color: var(--text-color);
-		background-color: var(--surface-color-1);
+		background-color: var(--surface-color-2);
 		border: none;
 		cursor: pointer;
 		padding: 0;
