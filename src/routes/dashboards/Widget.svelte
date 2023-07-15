@@ -19,6 +19,7 @@
 		/* border-radius: 5px; */
 		flex-grow: 1;
 		padding: 1em;
+		max-width: 100%;
 	}
 	.title {
 		/* background-color: var(--surface-color-2); */
@@ -27,6 +28,7 @@
 	}
 	.contents {
 		padding-top: 1em;
+		max-width: 100%;
 	}
 	@media (min-width: 550px) {
 		.widget {

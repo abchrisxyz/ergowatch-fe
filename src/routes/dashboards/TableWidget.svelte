@@ -1,56 +1,66 @@
 <script lang="ts">
 	import Widget from './Widget.svelte';
 
-	let data;
+	let columnLabels = ['Name', 'Transactions', 'Volume [ERG]', 'Fees [ERG]'];
+	let rowLabels = [
+		'<a href="https://sigmausd.io/">sigmausd.io</a>',
+		'<a href="https://tokenjay.app/">tokejay.app</a>',
+		'Direct'
+	];
+	let data = [
+		[27635, 9276492, 922],
+		[3125, 76924, 142],
+		[535, 1276924, 'NA']
+	];
 </script>
 
 <Widget title="Services">
-	<div class="table">
-		<div class="row header">
-			<div />
-			<div>Transactions</div>
-			<div>Volume [ERG]</div>
-			<div>Fees [ERG]</div>
-		</div>
-		<div class="row">
-			<div><a href="https://sigmausd.io/">sigmausd.io</a></div>
-			<div>27635</div>
-			<div>9276492</div>
-			<div>922</div>
-		</div>
-		<div class="row">
-			<div><a href="https://tokenjay.app/">tokejay.app</a></div>
-			<div>3145</div>
-			<div>76924</div>
-			<div>142</div>
-		</div>
-		<div class="row">
-			<div>Direct</div>
-			<div>535</div>
-			<div>1276924</div>
-			<div>NA</div>
-		</div>
+	<div class="wrapper">
+		<table class="table-widget">
+			<tr>
+				{#each columnLabels as label}
+					<th>{label}</th>
+				{/each}
+			</tr>
+			{#each data as row, i}
+				<tr>
+					<td>{@html rowLabels[i]}</td>
+					{#each row as val}
+						<td>{val}</td>
+					{/each}
+				</tr>
+			{/each}
+		</table>
 	</div>
 </Widget>
 
 <style>
-	.header {
-		/* font-weight: 700; */
-		/* font-size: smaller; */
-		padding-bottom: 0.2em;
-		/* background-color: var(--surface-color-2); */
+	.wrapper {
+		overflow-x: scroll;
+		padding-bottom: 1em;
 	}
-	.row {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		column-gap: 1em;
+	table {
+		width: 100%;
+		white-space: nowrap;
+		border-collapse: collapse;
+	}
+	tr:not(:first-child):not(:last-child) {
+		border-bottom: 1px solid var(--border);
+	}
+	th {
+		background-color: var(--surface-color-2);
+	}
+	th,
+	td {
+		padding: 1em 1em;
+		/* padding-right: 1em; */
 		text-align: end;
-		padding: 0.25em 0em;
 	}
-	.row div:first-child {
+	th:first-child,
+	td:first-child {
 		text-align: start;
 	}
-	a {
+	:global(.table-widget a) {
 		text-decoration: none;
 		color: inherit;
 		cursor: pointer;
