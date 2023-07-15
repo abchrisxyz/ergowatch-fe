@@ -1,6 +1,6 @@
 :root {
     /* light theme */
-    --text-color-light: black;
+    --text-color-light: hsl(0, 0%, 0%);
     --text-color-2-light: hsl(0, 0%, 60%);
     --surface-color-1-light: #fff;
     --surface-color-2-light: hsl(40, 5%, 97%);
@@ -11,7 +11,7 @@
     --text-color-2-dark: hsl(0, 0%, 85%);
     --surface-color-1-dark: hsl(0, 0%, 15%);
     --surface-color-2-dark: hsl(0, 0%, 7%);
-    --border-dark: hsl(0, 0%, 20%);
+    --border-dark: hsl(0, 0%, 35%);
 
 
 
