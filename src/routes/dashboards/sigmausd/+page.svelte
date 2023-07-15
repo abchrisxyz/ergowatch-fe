@@ -47,7 +47,6 @@
 
 <style>
 	.wrapper {
-		/* padding: 1rem; */
 		background-color: var(--surface-color-2);
 		min-height: 100%;
 	}

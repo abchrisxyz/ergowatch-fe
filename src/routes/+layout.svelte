@@ -71,7 +71,7 @@
 		display: grid;
 		min-height: 100vh;
 		grid-template-columns: 100vw;
-		grid-template-rows: max-content 1fr max-content;
+		grid-template-rows: max-content minmax(calc(100% - 64px), max-content) max-content;
 		grid-template-areas:
 			'header'
 			'main'
@@ -117,6 +117,7 @@
 	}
 	main {
 		grid-area: main;
+		background-color: var(--surface-color-2);
 	}
 	footer {
 		grid-area: footer;
@@ -144,7 +145,6 @@
 	@media (min-width: 840px) {
 		.layout {
 			grid-template-columns: max-content 1fr;
-			grid-template-rows: max-content minmax(calc(100vh - 3em), max-content) max-content;
 			grid-template-areas:
 				'header nav'
 				'main main'
