@@ -48,7 +48,7 @@
 		border-bottom: 1px solid var(--border);
 	}
 	th {
-		background-color: var(--surface-color-2);
+		background-color: var(--surface-color-3);
 	}
 	th,
 	td {

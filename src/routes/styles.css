@@ -2,15 +2,17 @@
     /* light theme */
     --text-color-light: hsl(0, 0%, 0%);
     --text-color-2-light: hsl(0, 0%, 60%);
-    --surface-color-1-light: #fff;
-    --surface-color-2-light: hsl(40, 5%, 97%);
+    --surface-color-1-light: hsl(0, 0%, 100%);
+    --surface-color-2-light: hsl(0, 5%, 97%);
+    --surface-color-3-light: hsl(0, 5%, 95%);
     --border-light: gainsboro;
 
     /* dark theme */
     --text-color-dark: hsl(0, 0%, 93%);
-    --text-color-2-dark: hsl(0, 0%, 85%);
+    --text-color-2-dark: hsl(0, 0%, 70%);
     --surface-color-1-dark: hsl(0, 0%, 15%);
     --surface-color-2-dark: hsl(0, 0%, 7%);
+    --surface-color-3-dark: hsl(0, 0%, 30%);
     --border-dark: hsl(0, 0%, 35%);
 
 
@@ -26,6 +28,7 @@ body {
     --text-color-2: var(--text-color-2-light);
     --surface-color-1: var(--surface-color-1-light);
     --surface-color-2: var(--surface-color-2-light);
+    --surface-color-3: var(--surface-color-3-light);
     --border: var(--border-light);
 }
 
@@ -34,6 +37,7 @@ body.alter-theme {
     --text-color-2: var(--text-color-2-dark);
     --surface-color-1: var(--surface-color-1-dark);
     --surface-color-2: var(--surface-color-2-dark);
+    --surface-color-3: var(--surface-color-3-dark);
     --border: var(--border-dark);
 }
 
@@ -60,6 +64,7 @@ body.alter-theme {
         --text-color-2: var(--text-color-2-dark);
         --surface-color-1: var(--surface-color-1-dark);
         --surface-color-2: var(--surface-color-2-dark);
+        --surface-color-3: var(--surface-color-3-dark);
         --border: var(--border-dark);
     }
 
@@ -68,6 +73,7 @@ body.alter-theme {
         --text-color-2: var(--text-color-2-light);
         --surface-color-1: var(--surface-color-1-light);
         --surface-color-2: var(--surface-color-2-light);
+        --surface-color-3: var(--surface-color-3-light);
         --border: var(--border-light);
     }
 
