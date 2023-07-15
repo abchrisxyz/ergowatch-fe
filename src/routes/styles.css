@@ -4,7 +4,7 @@
     --text-color-2-light: hsl(0, 0%, 60%);
     --surface-color-1-light: hsl(0, 0%, 100%);
     --surface-color-2-light: hsl(0, 5%, 97%);
-    --surface-color-3-light: hsl(0, 5%, 95%);
+    --surface-color-3-light: hsl(0, 5%, 96%);
     --border-light: gainsboro;
 
     /* dark theme */
@@ -12,11 +12,8 @@
     --text-color-2-dark: hsl(0, 0%, 70%);
     --surface-color-1-dark: hsl(0, 0%, 15%);
     --surface-color-2-dark: hsl(0, 0%, 7%);
-    --surface-color-3-dark: hsl(0, 0%, 30%);
+    --surface-color-3-dark: hsl(0, 0%, 25%);
     --border-dark: hsl(0, 0%, 35%);
-
-
-
 }
 
 * {
