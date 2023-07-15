@@ -107,6 +107,10 @@
 		grid-area: nav;
 		display: none;
 	}
+	header,
+	nav {
+		font-size: 16px;
+	}
 	header a {
 		text-decoration: none;
 		color: inherit;

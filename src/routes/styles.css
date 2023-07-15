@@ -91,6 +91,7 @@ body.alter-theme {
 
 body {
     font-family: 'Inter', sans-serif;
+    font-size: 14px;
     color: var(--text-color);
     background: var(--surface-color-1);
     margin: 0;
