@@ -53,36 +53,27 @@
 	.dashboard {
 		display: flex;
 		flex-direction: column;
-		row-gap: 1em;
+		row-gap: var(--gap);
 	}
 	.row {
 		display: flex;
 		flex-direction: column;
-		column-gap: 1em;
+		column-gap: var(--gap);
+		row-gap: var(--gap);
 		flex-wrap: wrap;
-		row-gap: 1em;
 	}
 	.keyvals {
-		/* display: flex; */
-		/* flex-wrap: wrap; */
-		/* justify-content: start; */
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		column-gap: 1em;
-		row-gap: 1em;
+		column-gap: var(--gap);
+		row-gap: var(--gap);
 	}
 	@media (min-width: 550px) {
-		.wrapper {
-			padding: 0rem 1rem;
-		}
 		.row {
 			flex-direction: row;
-			/* flex-wrap: nowrap; */
 		}
 		.keyvals {
 			display: grid;
-			/* grid-template-columns: repeat(3, max-content); */
-			/* grid-template-columns: repeat(3, minmax(1fr, max-content)); */
 			grid-template-columns: repeat(3, minmax(max-content, 1fr));
 		}
 	}

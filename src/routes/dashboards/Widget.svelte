@@ -14,9 +14,8 @@
 		display: flex;
 		flex-direction: column;
 		background-color: var(--surface-color-1);
-		border-top: 1px solid var(--border);
-		border-bottom: 1px solid var(--border);
-		/* border-radius: 5px; */
+		border: 1px solid var(--border);
+		border-radius: 5px;
 		flex-grow: 1;
 		padding: 1em;
 		max-width: 100%;
@@ -34,9 +33,6 @@
 		.widget {
 			display: flex;
 			flex-direction: column;
-			background-color: var(--surface-color-1);
-			border: 1px solid var(--border);
-			border-radius: 5px;
 			flex-grow: 1;
 		}
 		.title {

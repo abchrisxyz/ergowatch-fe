@@ -1,108 +1,28 @@
-/*  
-    Colors:
-    - surface 1: text background (widgets etc.)
-    - surface 2: site background
-    - surface 3: used for accents on top of surface 1
-*/
 :root {
-    /* light theme */
-    --text-color-1-light: hsl(0, 0%, 0%);
-    --text-color-2-light: hsl(0, 0%, 60%);
-    --surface-color-1-light: hsl(0, 0%, 100%);
-    --surface-color-2-light: hsl(0, 0%, 97%);
-    --surface-color-3-light: hsl(0, 0%, 96%);
-    --border-light: hsl(0, 0%, 86%);
+    font-size: 14px;
+    --margin: 12px;
+    --gap: 14px;
+}
 
-    /* dark theme */
-    --text-color-1-dark: hsl(0, 0%, 93%);
-    --text-color-2-dark: hsl(0, 0%, 70%);
-    --surface-color-1-dark: hsl(0, 0%, 20%);
-    --surface-color-2-dark: hsl(0, 0%, 15%);
-    --surface-color-3-dark: hsl(0, 0%, 23%);
-    --border-dark: hsl(0, 0%, 28%);
+@media (min-width: 550px) {
+    :root {
+        --margin: 24px;
+        --gap: 16px;
+    }
 }
 
 * {
     box-sizing: border-box;
-}
-
-body {
-    --text-color: var(--text-color-1-light);
-    --text-color-2: var(--text-color-2-light);
-    --surface-color-1: var(--surface-color-1-light);
-    --surface-color-2: var(--surface-color-2-light);
-    --surface-color-3: var(--surface-color-3-light);
-    --border: var(--border-light);
-}
-
-body.alter-theme {
-    --text-color: var(--text-color-1-dark);
-    --text-color-2: var(--text-color-2-dark);
-    --surface-color-1: var(--surface-color-1-dark);
-    --surface-color-2: var(--surface-color-2-dark);
-    --surface-color-3: var(--surface-color-3-dark);
-    --border: var(--border-dark);
-}
-
-.hide-if-light {
-    display: none;
-}
-
-.hide-if-dark {
-    display: block;
-}
-
-.alter-theme .hide-if-light {
-    display: block;
-}
-
-.alter-theme .hide-if-dark {
-    display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-
-    body {
-        --text-color: var(--text-color-1-dark);
-        --text-color-2: var(--text-color-2-dark);
-        --surface-color-1: var(--surface-color-1-dark);
-        --surface-color-2: var(--surface-color-2-dark);
-        --surface-color-3: var(--surface-color-3-dark);
-        --border: var(--border-dark);
-    }
-
-    body.alter-theme {
-        --text-color: var(--text-color-1-light);
-        --text-color-2: var(--text-color-2-light);
-        --surface-color-1: var(--surface-color-1-light);
-        --surface-color-2: var(--surface-color-2-light);
-        --surface-color-3: var(--surface-color-3-light);
-        --border: var(--border-light);
-    }
-
-    .hide-if-dark {
-        display: none
-    }
-
-    .hide-if-light {
-        display: block;
-    }
-
-    .alter-theme .hide-if-light {
-        display: none;
-    }
-
-    .alter-theme .hide-if-dark {
-        display: block;
-    }
-
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
     color: var(--text-color);
     background: var(--surface-color-2);
-    margin: 0;
-    padding: 0;
+}
+
+h1 {
+    margin-bottom: 0.5em;
 }

@@ -1,5 +1,6 @@
 <script>
 	import './styles.css';
+	import './theme.css';
 	import { MoonIcon, SunIcon, MenuIcon } from 'svelte-feather-icons';
 	import NavLink from './NavLink.svelte';
 	import ErgoWatchLogo from '$lib/ErgoWatchLogo.svelte';
@@ -92,7 +93,7 @@
 	}
 	header {
 		grid-area: header;
-		padding: 1em;
+		padding: var(--margin);
 		display: flex;
 		justify-content: space-between;
 	}
@@ -100,12 +101,13 @@
 		display: flex;
 		align-items: center;
 		column-gap: 0.3em;
-		margin-right: 1em;
+		/* margin-right: calc(var(--margin) * 2); */
 		font-weight: 700;
 	}
 	nav {
 		grid-area: nav;
 		display: none;
+		margin: var(--margin);
 	}
 	header,
 	nav {
@@ -118,19 +120,19 @@
 	.nav-group {
 		display: flex;
 		flex-direction: column;
-		row-gap: 1em;
-		margin-left: 1em;
-		margin-bottom: 1em;
+		row-gap: var(--margin);
+		margin-bottom: var(--margin);
 	}
 	main {
 		grid-area: main;
+		margin: var(--margin);
 	}
 	footer {
 		grid-area: footer;
 		border-top: 1px solid var(--border);
-		padding: 1em;
+		padding: var(--margin);
 		display: flex;
-		column-gap: 1em;
+		column-gap: var(--margin);
 		justify-content: center;
 	}
 	header button,
@@ -160,13 +162,9 @@
 		.nav-group {
 			display: flex;
 			flex-direction: row;
-			column-gap: 2em;
+			column-gap: 1.5em;
 			align-items: center;
-			margin: 0 1em;
-		}
-		.theme-switch {
-			margin: 1em;
-			margin-left: 0;
+			margin: 0;
 		}
 	}
 </style>
