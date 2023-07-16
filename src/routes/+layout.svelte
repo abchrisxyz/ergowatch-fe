@@ -36,15 +36,15 @@
 	</header>
 	<nav>
 		<div class="nav-group">
-			<NavLink href="/dashboards" name="Dashboards" {onNavLinkClick} />
-			<NavLink href="/charts" name="Charts" {onNavLinkClick} />
-			<NavLink href="/lists" name="Lists" {onNavLinkClick} />
-			<NavLink href="/tools" name="Tools" {onNavLinkClick} />
+			<NavLink href="/dashboards" {onNavLinkClick}>Dashboards</NavLink>
+			<NavLink href="/charts" {onNavLinkClick}>Charts</NavLink>
+			<NavLink href="/lists" {onNavLinkClick}>Lists</NavLink>
+			<NavLink href="/tools" {onNavLinkClick}>Tools</NavLink>
 		</div>
 		<div class="nav-group">
-			<NavLink href="/sync" name="Sync" {onNavLinkClick} />
-			<NavLink href="/api" name="API" {onNavLinkClick} />
-			<NavLink href="/about" name="About" {onNavLinkClick} />
+			<NavLink href="/sync" {onNavLinkClick}>Sync</NavLink>
+			<NavLink href="/api" {onNavLinkClick}>API</NavLink>
+			<NavLink href="/about" {onNavLinkClick}>About</NavLink>
 			<div class="theme-switch">
 				<button type="button" on:click={toggleTheme}>
 					<div class="hide-if-light">
@@ -115,15 +115,20 @@
 		text-decoration: none;
 		color: inherit;
 	}
+	.nav-group {
+		display: flex;
+		flex-direction: column;
+		row-gap: 1em;
+		margin-left: 1em;
+		margin-bottom: 1em;
+	}
 	main {
 		grid-area: main;
-		/* background-color: var(--surface-color-2); */
 	}
 	footer {
 		grid-area: footer;
 		border-top: 1px solid var(--border);
 		padding: 1em;
-		/* background-color: var(--surface-color-1); */
 		display: flex;
 		column-gap: 1em;
 		justify-content: center;
@@ -135,9 +140,6 @@
 		border: none;
 		cursor: pointer;
 		padding: 0;
-	}
-	.theme-switch {
-		margin: 1em;
 	}
 
 	@media (min-width: 840px) {
@@ -157,11 +159,14 @@
 		}
 		.nav-group {
 			display: flex;
+			flex-direction: row;
+			column-gap: 2em;
 			align-items: center;
 			margin: 0 1em;
 		}
 		.theme-switch {
 			margin: 1em;
+			margin-left: 0;
 		}
 	}
 </style>
