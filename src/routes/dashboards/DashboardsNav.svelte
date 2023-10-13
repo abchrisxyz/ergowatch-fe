@@ -73,6 +73,12 @@
 	.container {
 		overflow-y: hidden;
 	}
+	nav {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.75em;
+		margin-bottom: 2em;
+	}
 	.collapsed nav {
 		display: none;
 	}
@@ -80,7 +86,6 @@
 		display: flex;
 		column-gap: 1em;
 		align-items: baseline;
-		/* margin-bottom: 1em; */
 	}
 	h1 {
 		color: var(--text-color-2);
@@ -98,8 +103,9 @@
 		display: block;
 	}
 	.category {
-		padding-bottom: 0.5em;
-		font-weight: 550;
+		/* padding-bottom: 0.5em; */
+		/* font-weight: 550; */
+		text-transform: uppercase;
 	}
 	.category:not(:first-child) {
 		padding-top: 1em;
@@ -117,10 +123,13 @@
 
 	@media (min-width: 840px) {
 		.collapsed nav {
-			display: initial;
+			display: flex;
 		}
 		.collapsible #switch {
 			display: none;
+		}
+		nav {
+			margin-bottom: 0;
 		}
 	}
 </style>
