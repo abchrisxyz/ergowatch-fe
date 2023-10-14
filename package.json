@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
+		"@types/pg": "^8.10.5",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"eslint": "^8.28.0",
@@ -29,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"pg": "^8.11.3",
 		"svelte-feather-icons": "^4.0.1"
 	}
 }
