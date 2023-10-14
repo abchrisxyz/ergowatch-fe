@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let columnLabels: string[];
-	export let rowLabels: number[] | string[];
 	export let data: (number | string)[][];
+	export let allowHTML = false;
 </script>
 
 <div class="wrapper">
@@ -13,10 +13,15 @@
 		</tr>
 		{#each data as row, i}
 			<tr>
-				<td>{@html rowLabels[i]}</td>
-				{#each row as val}
-					<td>{@html val}</td>
-				{/each}
+				{#if allowHTML}
+					{#each row as val}
+						<td>{@html val}</td>
+					{/each}
+				{:else}
+					{#each row as val}
+						<td>{val}</td>
+					{/each}
+				{/if}
 			</tr>
 		{/each}
 	</table>

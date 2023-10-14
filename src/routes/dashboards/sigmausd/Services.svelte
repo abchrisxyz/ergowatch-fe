@@ -21,8 +21,8 @@
 
 	// Services
 	const columnLabels = ['Service', 'Volume', 'Fees', 'Transactions', 'First tx', 'Last tx'];
-	const rowLabels = data.map((s) => knownServiceAddresses[s.address_id] ?? 'Unknown');
 	const rows = data.map((s) => [
+		knownServiceAddresses[s.address_id] ?? 'Unknown',
 		formatNano(s.volume),
 		formatNano(s.fees),
 		Number(s.tx_count).toLocaleString(),
@@ -31,4 +31,4 @@
 	]);
 </script>
 
-<WidgetTable {columnLabels} {rowLabels} data={rows} />
+<WidgetTable {columnLabels} data={rows} allowHTML={true} />
