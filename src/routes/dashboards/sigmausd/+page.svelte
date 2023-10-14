@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import Widget from '../Widget.svelte';
 	import Metric from '../Metric.svelte';
-	import TableWidget from '../TableWidget.svelte';
+	import Services from './Services.svelte';
+
+	export let data;
 </script>
 
 <div class="wrapper">
@@ -37,7 +39,9 @@
 			</Widget>
 		</div>
 		<div class="row">
-			<TableWidget />
+			<Widget title="Contract Interaction">
+				<Services data={data.services} />
+			</Widget>
 		</div>
 		<div class="row">
 			<Widget title="History" />
