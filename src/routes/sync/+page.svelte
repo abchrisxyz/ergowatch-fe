@@ -7,7 +7,6 @@
 	let data: Data | undefined;
 
 	let url = PUBLIC_EW_API_ROOT + '/sync/status';
-	console.log(url);
 	fetch(url)
 		.then((res) => res.json())
 		.then((res) => (data = res));
