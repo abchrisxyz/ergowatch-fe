@@ -3,7 +3,11 @@
 	import Metric from '../Metric.svelte';
 	import Services from './Services.svelte';
 
+	import { deriveStateInfo } from './ageusd';
+
 	export let data;
+
+	const { sigusd, sigrsv, reserves } = deriveStateInfo(data.state);
 </script>
 
 <div class="wrapper">
@@ -12,29 +16,29 @@
 		<div class="row">
 			<Widget title="SigUSD">
 				<div class="keyvals">
-					<Metric label="Circulating" value={515020.12} units="" />
-					<Metric label="Price" value={0.79} units="ERG" />
-					<Metric label="Mintable" value={0} units="" />
-					<Metric label="Redeemable" value={515020.12} units="" />
-					<Metric label="Average ROI" value={14.1} units="%" />
+					<Metric label="Circulating" value={sigusd.circulating} units="" />
+					<Metric label="Price" value={sigusd.price / 10 ** 9} units="ERG" />
+					<Metric label="Mintable" value={sigusd.mintable} units="" />
+					<Metric label="Redeemable" value={sigusd.redeemable} units="" />
+					<!-- <Metric label="Average ROI" value={-1} units="%" /> -->
 				</div>
 			</Widget>
 			<Widget title="SigRSV">
 				<div class="keyvals">
-					<Metric label="Circulating" value={515020.12} units="" />
-					<Metric label="Price" value={0.79} units="ERG" />
-					<Metric label="Mintable" value={0} units="" />
-					<Metric label="Redeemable" value={515020.12} units="" />
-					<Metric label="Average ROI" value={14.1} units="%" />
+					<Metric label="Circulating" value={sigrsv.circulating} units="" />
+					<Metric label="Price" value={sigrsv.price / 10 ** 9} units="" />
+					<Metric label="Mintable" value={sigrsv.mintable} units="" />
+					<Metric label="Redeemable" value={sigrsv.redeemable} units="" />
+					<!-- <Metric label="Average ROI" value={-1} units="%" /> -->
 				</div>
 			</Widget>
 			<Widget title="Reserves">
 				<div class="keyvals">
-					<Metric label="Total" value={1475298.96} units="ERG" />
-					<Metric label="Liabilities" value={414034.97} units="ERG" />
-					<Metric label="Equity" value={1061263.98} units="ERG" />
-					<Metric label="Ratio (RR)" value={356} units="%" />
-					<Metric label="TVL" value={1835132} units="$" />
+					<Metric label="Total" value={reserves.total / 10 ** 9} units="ERG" />
+					<Metric label="Liabilities" value={reserves.liabilities / 10 ** 9} units="ERG" />
+					<Metric label="Equity" value={reserves.equity / 10 ** 9} units="ERG" />
+					<Metric label="Ratio (RR)" value={reserves.rr} units="%" />
+					<Metric label="TVL" value={reserves.tvl} units="$" />
 				</div>
 			</Widget>
 		</div>
