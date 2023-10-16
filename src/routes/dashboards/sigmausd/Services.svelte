@@ -7,7 +7,7 @@
 
 	const knownServiceAddresses: { [key: number | string]: string } = {
 		145248: '<a href="https://sigmausd.io/">sigmausd.io</a>',
-		566464: '<a href="https://tokenjay.app/">tokejay.app</a>',
+		566464: '<a href="https://tokenjay.app/">tokenjay.app</a>',
 		null: 'Direct (no service)'
 	};
 
