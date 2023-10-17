@@ -2,6 +2,8 @@
 	import Widget from '../Widget.svelte';
 	import Metric from '../Metric.svelte';
 	import Services from './Services.svelte';
+	import Dollar from '$lib/Dollar.svelte';
+	import Nano from '$lib/Nano.svelte';
 
 	import { deriveStateInfo } from './ageusd';
 
@@ -16,29 +18,29 @@
 		<div class="row">
 			<Widget title="SigUSD">
 				<div class="keyvals">
-					<Metric label="Circulating" value={sigusd.circulating} units="" />
-					<Metric label="Price" value={sigusd.price / 10 ** 9} units="ERG" />
-					<Metric label="Mintable" value={sigusd.mintable} units="" />
-					<Metric label="Redeemable" value={sigusd.redeemable} units="" />
-					<!-- <Metric label="Average ROI" value={-1} units="%" /> -->
+					<Metric label="Circulating" units="">{sigusd.circulating.toLocaleString()}</Metric>
+					<Metric label="Price"><Nano amount={sigusd.price} decimals={2} /></Metric>
+					<Metric label="Mintable">{sigusd.mintable.toLocaleString()}</Metric>
+					<Metric label="Redeemable">{sigusd.redeemable.toLocaleString()}</Metric>
+					<!-- <Metric label="Average ROI" units="%">{-1}</Metric> -->
 				</div>
 			</Widget>
 			<Widget title="SigRSV">
 				<div class="keyvals">
-					<Metric label="Circulating" value={sigrsv.circulating} units="" />
-					<Metric label="Price" value={sigrsv.price / 10 ** 9} units="" />
-					<Metric label="Mintable" value={sigrsv.mintable} units="" />
-					<Metric label="Redeemable" value={sigrsv.redeemable} units="" />
-					<!-- <Metric label="Average ROI" value={-1} units="%" /> -->
+					<Metric label="Circulating">{sigrsv.circulating.toLocaleString()}</Metric>
+					<Metric label="Price"><Nano amount={sigrsv.price} decimals={8} /></Metric>
+					<Metric label="Mintable">{sigrsv.mintable.toLocaleString()}</Metric>
+					<Metric label="Redeemable">{sigrsv.redeemable.toLocaleString()}</Metric>
+					<!-- <Metric label="Average ROI" units="%">{-1}</Metric> -->
 				</div>
 			</Widget>
 			<Widget title="Reserves">
 				<div class="keyvals">
-					<Metric label="Total" value={reserves.total / 10 ** 9} units="ERG" />
-					<Metric label="Liabilities" value={reserves.liabilities / 10 ** 9} units="ERG" />
-					<Metric label="Equity" value={reserves.equity / 10 ** 9} units="ERG" />
-					<Metric label="Ratio (RR)" value={reserves.rr} units="%" />
-					<Metric label="TVL" value={reserves.tvl} units="$" />
+					<Metric label="Total"><Nano amount={reserves.total} decimals={0} /></Metric>
+					<Metric label="Liabilities"><Nano amount={reserves.liabilities} decimals={0} /></Metric>
+					<Metric label="Equity"><Nano amount={reserves.equity} decimals={0} /></Metric>
+					<Metric label="Ratio (RR)" units="%">{reserves.rr.toFixed(0).toLocaleString()}</Metric>
+					<Metric label="TVL"><Dollar amount={reserves.tvl} decimals={0} /></Metric>
 				</div>
 			</Widget>
 		</div>
