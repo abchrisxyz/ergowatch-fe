@@ -18,7 +18,7 @@
 	@media (min-width: 840px) {
 		.layout {
 			display: grid;
-			grid-template-columns: max-content 1fr;
+			grid-template-columns: max-content minmax(0, 1fr);
 			column-gap: var(--margin);
 		}
 	}
