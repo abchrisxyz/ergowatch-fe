@@ -29,11 +29,11 @@
 
 <style>
 	.wrapper {
-		overflow-x: scroll;
+		overflow-x: auto;
 		padding-bottom: 1em;
 	}
 	table {
-		width: 100%;
+		min-width: 100%;
 		white-space: nowrap;
 		border-collapse: collapse;
 	}
