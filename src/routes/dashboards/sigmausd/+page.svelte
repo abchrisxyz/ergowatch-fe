@@ -2,6 +2,7 @@
 	import Widget from '../Widget.svelte';
 	import Metric from '../Metric.svelte';
 	import Services from './Services.svelte';
+	import History from './History.svelte';
 	import Dollar from '$lib/Dollar.svelte';
 	import Nano from '$lib/Nano.svelte';
 
@@ -50,7 +51,9 @@
 			</Widget>
 		</div>
 		<div class="row">
-			<Widget title="History" />
+			<Widget title="History">
+				<History />
+			</Widget>
 		</div>
 	</div>
 </div>
