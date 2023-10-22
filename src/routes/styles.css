@@ -30,3 +30,7 @@ h1 {
 h2 {
     margin-bottom: 0.75em;
 }
+
+button {
+    color: var(--text-color);
+}
