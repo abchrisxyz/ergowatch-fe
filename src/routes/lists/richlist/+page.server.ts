@@ -12,7 +12,7 @@ export async function load({ locals }) {
             , b.mean_age_timestamp
         from erg.balances b
         join core.addresses a on a.id = b.address_id
-        where a.id <> 1
+        where a.id not in (1, 596523, 599350)
         order by b.nano desc
         limit 100`
     )).rows as Balance[];
