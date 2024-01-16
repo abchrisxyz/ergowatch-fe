@@ -33,7 +33,7 @@ export async function GET({ locals, params }) {
             , s.circ_rc
             , s.reserves
         from sigmausd.history s
-        join sigmausd.headers h on h.height = s.height
+        join core.headers h on h.height = s.height
         where h.timestamp >= (extract(epoch from now() - '${d} days'::interval))::bigint * 1000
         order by 1;
     `;
