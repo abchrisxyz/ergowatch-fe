@@ -6,8 +6,8 @@
 	export let data: Service[];
 
 	const knownServiceAddresses: { [key: number | string]: string } = {
-		145248: '<a href="https://sigmausd.io/">sigmausd.io</a>',
-		566464: '<a href="https://tokenjay.app/">tokenjay.app</a>',
+		1452481: '<a href="https://sigmausd.io/">sigmausd.io</a>',
+		5664641: '<a href="https://tokenjay.app/">tokenjay.app</a>',
 		null: 'Direct (no service)'
 	};
 
