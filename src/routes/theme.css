@@ -5,6 +5,8 @@
     - surface 3: used for accents on top of surface 1
 */
 :root {
+    --text-color-focus: hsl(39, 100%, 50%);
+
     /* light theme */
     --text-color-1-light: hsl(0, 0%, 0%);
     --text-color-2-light: hsl(0, 0%, 60%);
