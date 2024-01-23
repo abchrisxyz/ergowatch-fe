@@ -90,7 +90,6 @@
 		size: 0
 	};
 	const commonOpts = {
-		ms: 1,
 		height: 60,
 		legend: {
 			show: true,
