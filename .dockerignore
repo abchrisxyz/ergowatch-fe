@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Except what's needed 
+!/src
+!/static
+!/.env.template
+!/package*.json
+!/svelte.config.js
+!/vite.config.ts
