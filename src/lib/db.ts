@@ -1,6 +1,6 @@
 // https://stackoverflow.com/questions/72440961/how-to-connect-my-postgresql-database-to-sveltekit-and-run-queries
-import { Pool } from "pg";
 import pg from "pg";
+const { Pool } = pg;
 
 import { EW_PG_HOST, EW_PG_NAME, EW_PG_PASS, EW_PG_PORT, EW_PG_USER } from "$env/static/private";
 
