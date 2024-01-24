@@ -28,7 +28,7 @@
 
 	async function load_history(window: string) {
 		ready = false;
-		let url = `http://localhost:5173/api/sigmausd/history/${window}`;
+		let url = `/api/sigmausd/history/${window}`;
 		fetch(url)
 			.then(async (res) => {
 				if (res.ok) {
