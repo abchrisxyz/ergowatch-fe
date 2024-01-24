@@ -1,22 +1,53 @@
-# create-svelte
+# ErgoWatch front-end
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A web app to explore ErgoWatch data.
 
-## Creating a project
+## Running a local instance
 
-If you're seeing this, you've probably already done this step. Congrats!
+You'll need node installed as well as access (i.e. credentials) to an ErgoWatch database.
+
+### Get the code
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+git clone https://github.com/abchrisxyz/ergowatch-fe
 ```
+
+### Install dependencies
+
+```bash
+cd ergowatch-fe
+npm install
+```
+
+### Prepare a local .env file
+
+The app expects some build-time variables to be set.
+This is done by placing a `.env` file in the root dir (`ergowatch-fe`)
+
+```
+echo PUBLIC_EW_API_ROOT=http://your.ergo.watch > .env
+echo EW_PG_HOST=some_host >> .env
+echo EW_PG_PORT=5432 >> .env
+echo EW_PG_USER=some_user >> .env
+echo EW_PG_NAME=ew >> .env
+echo EW_PG_PASS=some_pw >> .env
+```
+
+### Run
+
+```bash
+npm run preview
+
+# Or
+npm run build
+node build
+```
+
+The app should now be running on [http:localhost:3000](http:localhost:3000).
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've installed dependencies, start a development server:
 
 ```bash
 npm run dev
@@ -24,15 +55,3 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
