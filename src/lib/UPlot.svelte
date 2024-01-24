@@ -14,6 +14,7 @@
 	let width = 0;
 
 	const defaultOpts = {
+		ms: 1,
 		height: 300
 	};
 
@@ -38,16 +39,18 @@
 			ax.stroke = defaultAxisOptions.stroke;
 		}
 		// Apply default series point options
-		for (let s of combined.series) {
+		for (let s of combined.series.slice(1)) {
 			s.points = { ...defaultSeriesOpts.points, ...s.points };
 		}
 		return combined;
 	}
 
 	// Trigger redraws on theme changes
-	$: ready = ref !== undefined;
-	$: if (ready && $theme) {
-		uplotHandle.redraw();
+	$: if ($theme) redraw();
+	function redraw() {
+		// This won't update legend styles: https://github.com/leeoniya/uPlot/issues/863
+		// For now, need to edit legend in dom if needed
+		uplotHandle?.redraw();
 	}
 
 	// Trigger updates on data change
@@ -60,7 +63,7 @@
 	function resize() {
 		if (uplotHandle.width === width) return;
 		const size = { width: width, height: uplotHandle.height };
-		uplotHandle.setSize(size);
+		requestAnimationFrame(() => uplotHandle.setSize(size));
 	}
 
 	onMount(() => {
@@ -81,7 +84,6 @@
 				}
 			}
 		});
-
 		uplotHandle = new uPlot(mergeOpts(opts), data, ref);
 		resizeObserver.observe(ref);
 		return () => resizeObserver.unobserve(ref);
@@ -94,8 +96,5 @@
 	div.disabled {
 		pointer-events: none;
 		opacity: 0.4;
-	}
-	.ew-uplot :global(u-plot .u-axis) {
-		background-color: red;
 	}
 </style>
