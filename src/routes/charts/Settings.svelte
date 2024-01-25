@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Panel from '$lib/Panel.svelte';
-	import { SettingsIcon, XIcon, ChevronLeftIcon } from 'svelte-feather-icons';
+	import { SettingsIcon, ChevronLeftIcon } from 'svelte-feather-icons';
 	import type { EntryDescription } from '../api/series/catalog';
 	import { setSeries, setTimeWindow, dataStore } from './store';
 
