@@ -1,7 +1,7 @@
-import { catalogDesc, type EntrDescription } from '../api/series/catalog';
+import { catalogDesc, type EntryDescription } from '../api/series/catalog';
 
 export function load() {
     return {
-        catalog: catalogDesc as EntrDescription[]
+        catalog: catalogDesc as EntryDescription[]
     }
 }
