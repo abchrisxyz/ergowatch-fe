@@ -1,4 +1,3 @@
-import { _ } from "$env/static/private";
 
 interface Entry {
     id: string;
