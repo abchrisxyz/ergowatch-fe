@@ -38,7 +38,7 @@
 								<button
 									class="div"
 									class:selected={entry.id === seriesIds[0]}
-									on:click={() => setSeries(entry.id, 0)}
+									on:click={() => setSeries(entry.id, 0, entry.scale)}
 								>
 									{entry.desc}
 								</button>

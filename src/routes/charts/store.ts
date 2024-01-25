@@ -67,7 +67,7 @@ export async function setTimeWindow(newTimeWindowId: string) {
 }
 
 
-export async function setSeries(seriesId: string, seriesIndex: number) {
+export async function setSeries(seriesId: string, seriesIndex: number, scale: number | undefined) {
     readyStore.set(false);
 
     let timeRange = getTimeWindowRange(timeWindowId);
@@ -81,7 +81,13 @@ export async function setSeries(seriesId: string, seriesIndex: number) {
             // Only one existing series, can overwrite it all
             curr.seriesIds = [seriesId];
             curr.timestamps = timestamps;
-            curr.values = [values];
+            if (scale === undefined) {
+                curr.values = [values];
+            } else {
+                console.log("scale:", scale);
+                curr.values = [values.map(v => v * scale)]
+            }
+
         }
         else {
             if (seriesIndex < numberOfSeries) {
