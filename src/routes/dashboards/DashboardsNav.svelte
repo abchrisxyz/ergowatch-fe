@@ -63,7 +63,7 @@
 		<NavLink href="/dashboards/sigmausd" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>SigmaUSD</div>
-				<div class="description">Some description</div>
+				<div class="description">SigmaUSD contract state, usage and history</div>
 			</div>
 		</NavLink>
 	</nav>
