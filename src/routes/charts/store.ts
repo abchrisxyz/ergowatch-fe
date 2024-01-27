@@ -5,14 +5,14 @@ type Timestamp = number | undefined;
 type TimeRange = { fr: Timestamp, to: Timestamp };
 
 let isInitial = true;
-let timeWindowId = "1m";
+let initialTimeWindowId = "1m";
 const initialData = {
     seriesIds: ["dummy"],
     timestamps: [1600000000],
     values: [[0]],
 };
 const initialOpts = {
-    height: 400,
+    height: 500,
     scales: {
         x: {
             time: true
@@ -40,6 +40,7 @@ const initialOpts = {
 export const dataStore = writable(initialData);
 export const optsStore: Writable<object> = writable(initialOpts);
 export const readyStore: Writable<boolean> = writable(false);
+export const timeWindowStore: Writable<string> = writable(initialTimeWindowId);
 
 const DAY_MS = 86_400_000;
 function getTimeWindowRange(timeWindowId: string): TimeRange {
@@ -60,9 +61,9 @@ function getTimeWindowRange(timeWindowId: string): TimeRange {
 }
 
 export async function setTimeWindow(newTimeWindowId: string) {
-    if (newTimeWindowId === timeWindowId) return;
-    timeWindowId = newTimeWindowId;
-    await refreshSeries();
+    if (newTimeWindowId === get(timeWindowStore)) return;
+    timeWindowStore.update(() => newTimeWindowId);
+    await refreshSeries(newTimeWindowId);
 
 }
 
@@ -70,6 +71,7 @@ export async function setTimeWindow(newTimeWindowId: string) {
 export async function setSeries(seriesId: string, seriesIndex: number, scale: number | undefined) {
     readyStore.set(false);
 
+    let timeWindowId = get(timeWindowStore);
     let timeRange = getTimeWindowRange(timeWindowId);
     const seriesData = await fetchSeries(seriesId, timeRange);
     if (seriesData === null) return;
@@ -107,7 +109,6 @@ export async function setSeries(seriesId: string, seriesIndex: number, scale: nu
         return curr;
     });
     if (isInitial) {
-        // updateStrokes();
         isInitial = false;
     }
     readyStore.set(true);
@@ -141,7 +142,7 @@ async function fetchSeries(seriesID: string, timeRange: TimeRange): Promise<[num
 }
 
 // Refetch data for all series
-async function refreshSeries() {
+async function refreshSeries(timeWindowId: string) {
     readyStore.set(false);
     const ds = get(dataStore);
     const timeRange = getTimeWindowRange(timeWindowId);

@@ -1,5 +1,9 @@
+<script>
+	export let padding = true;
+</script>
+
 <div class="panel">
-	<div class="contents">
+	<div class="contents" class:padding>
 		<slot />
 	</div>
 </div>
@@ -14,10 +18,11 @@
 		flex-grow: 1;
 		padding: 1em;
 		max-width: 100%;
+		height: 100%;
 	}
 	.contents {
-		padding-top: 1em;
 		max-width: 100%;
+		height: 100%;
 	}
 	@media (min-width: 550px) {
 		.panel {
@@ -25,7 +30,7 @@
 			flex-direction: column;
 			flex-grow: 1;
 		}
-		.contents {
+		.contents.padding {
 			padding: 1em;
 		}
 	}
