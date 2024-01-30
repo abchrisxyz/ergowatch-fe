@@ -27,19 +27,19 @@
 		<NavLink href="/dashboards/emission" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>Emission</div>
-				<div class="description">...</div>
+				<div class="description">ERG emission</div>
 			</div>
 		</NavLink>
-		<NavLink href="/dashboards/demurrage" {onNavLinkClick}>
+		<NavLink href="/dashboards/network" {onNavLinkClick}>
 			<div class="dashboard-link">
-				<div>Demurage</div>
-				<div class="description">...</div>
+				<div>Network</div>
+				<div class="description">Network parameters and voting</div>
 			</div>
 		</NavLink>
 		<NavLink href="/dashboards/mining" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>Mining</div>
-				<div class="description">...</div>
+				<div class="description">Mining stats</div>
 			</div>
 		</NavLink>
 
@@ -47,15 +47,13 @@
 		<NavLink href="/dashboards/addresses" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>Addresses</div>
-				<div class="description">
-					Some description that is longer than can fit on a small screen.
-				</div>
+				<div class="description">Address counts etc.</div>
 			</div>
 		</NavLink>
-		<NavLink href="/dashboards/cexs" {onNavLinkClick}>
+		<NavLink href="/dashboards/exchanges" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>Exchanges</div>
-				<div class="description">Some description</div>
+				<div class="description">Supply on tracked exchanges</div>
 			</div>
 		</NavLink>
 
