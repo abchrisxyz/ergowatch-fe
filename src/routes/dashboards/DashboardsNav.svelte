@@ -109,7 +109,8 @@
 		padding-top: 1em;
 	}
 	.dashboard-link {
-		display: flex;
+		display: grid;
+		grid-template-columns: 90px 1fr;
 		column-gap: 1em;
 	}
 	.description {
