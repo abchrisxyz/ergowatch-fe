@@ -2,8 +2,8 @@
 	import UPlot from '$lib/UPlot.svelte';
 	import { theme } from '../../../routes/theme';
 
-	const xs = [...Array(100).keys()];
-	const data = [xs, xs.map((x) => Math.random())];
+	export let xs: number[];
+	export let values: number[];
 
 	const strokeColor1 = () => ($theme.dark ? 'hsl(0, 0%, 78%)' : 'hsl(0, 0%, 18%)');
 	const fillColor1 = () => ($theme.dark ? 'hsla(0, 0%, 78%, 0.5)' : 'hsla(0, 0%, 52%, 0.4)');
@@ -44,4 +44,4 @@
 	};
 </script>
 
-<UPlot {opts} {data} />
+<UPlot {opts} data={[xs, values]} />
