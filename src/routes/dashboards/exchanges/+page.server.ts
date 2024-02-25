@@ -28,8 +28,8 @@ export async function load({ locals }) {
             , count(*) as addresses
             , count(*) filter (where b.address_id is not null) as unspent_addresses
             , sum(b.nano) as nano
-        from exchanges.deposit_addresses d
-        join exchanges.exchanges e on e.id = d.cex_id
+        from exchanges.exchanges e
+        left join exchanges.deposit_addresses d on d.cex_id = e.id
         left join erg.balances b on b.address_id = d.address_id
         group by 1;
     `)).rows as [DepositRecord];
