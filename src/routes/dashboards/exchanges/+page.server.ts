@@ -25,8 +25,8 @@ export async function load({ locals }) {
     `)).rows as [MainRecord];
     const deposits = (await client.query(`
         select e.name
-            , count(*) as addresses
-            , count(*) filter (where b.address_id is not null) as unspent_addresses
+            , count(d.address_id) as addresses
+            , count(d.address_id) filter (where b.address_id is not null) as unspent_addresses
             , sum(b.nano) as nano
         from exchanges.exchanges e
         left join exchanges.deposit_addresses d on d.cex_id = e.id
