@@ -8,6 +8,7 @@
 	import TableWidgetRow from '../TableWidgetRow.svelte';
 	import TableWidgetHeader from '../TableWidgetHeader.svelte';
 	import TableWidgetCell from '../TableWidgetCell.svelte';
+	import CexSupplyChart from './CexSupplyChart.svelte';
 
 	export let data;
 
@@ -39,7 +40,13 @@
 		</NumberWidget>
 	</NumberGroup>
 
-	<Widget title="Supply on exchanges">chart</Widget>
+	<Widget title="Supply on exchanges (30 days)">
+		<CexSupplyChart
+			ts={data.supply.timestamps}
+			main={data.supply.main}
+			deposits={data.supply.deposits}
+		/>
+	</Widget>
 
 	<Widget title="Tracked exchanges">
 		<TableWidget template="repeat(6, minmax(max-content, 1fr))">

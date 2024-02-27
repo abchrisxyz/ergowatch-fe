@@ -10,9 +10,16 @@ export interface DepositRecord {
     unspent_addresses: number,
     nano: number,
 }
+export interface SupplyRecord {
+    timestamp: number,
+    main: number,
+    deposits: number
+}
+
 
 export async function load({ locals }) {
     const client = locals.dbconn;
+
     const main = (await client.query(`
         select e.name
             , count(*) as addresses
@@ -23,6 +30,7 @@ export async function load({ locals }) {
         group by 1
         order by 3 desc;
     `)).rows as [MainRecord];
+
     const deposits = (await client.query(`
         select e.name
             , count(d.address_id) as addresses
@@ -34,8 +42,23 @@ export async function load({ locals }) {
         group by 1;
     `)).rows as [DepositRecord];
 
+    const supply = (await client.query(`
+        select t.timestamp
+            , s.main
+            , s.deposits
+        from exchanges.supply s
+        join timestamps.hourly t on t.height = s.height
+        where t.timestamp >= (extract(epoch from now() - '30 days'::interval))::bigint * 1000
+        order by s.height;
+    `)).rows as [SupplyRecord];
+
     return {
         main: main,
-        deposits: deposits
+        deposits: deposits,
+        supply: {
+            timestamps: supply.map(r => r.timestamp),
+            main: supply.map(r => r.main),
+            deposits: supply.map(r => r.deposits),
+        }
     }
 }
