@@ -232,8 +232,23 @@ const _catalog: Entry[] = [
         table: 'erg.supply_composition',
         column: 'contracts',
         scale: NANO2ERG
-
     },
+    // Supply on exchanges
+    {
+        id: 'cex_supply_main',
+        desc: 'Erg supply on exchange main addresses',
+        table: 'exchanges.supply',
+        column: 'main',
+        scale: NANO2ERG
+    },
+    {
+        id: 'cex_supply_deposits',
+        desc: 'Erg supply on exchange deposit addresses',
+        table: 'exchanges.supply',
+        column: 'deposits',
+        scale: NANO2ERG
+    },
+
 
 
 ];
