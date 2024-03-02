@@ -24,7 +24,7 @@
 
 <Dashboard title="Mining">
 	<NumberGroup>
-		<NumberWidget units="PH/s" desc="Hash rate">
+		<NumberWidget units="TH/s" desc="Hash rate">
 			{hash_rate.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 		</NumberWidget>
 		<NumberWidget units="PH" desc="Difficulty">

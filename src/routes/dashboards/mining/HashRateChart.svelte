@@ -28,7 +28,7 @@
 				show: true
 			},
 			{
-				label: 'PH/s'
+				label: 'TH/s'
 			}
 		],
 		series: [
