@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { catalogDict } from "../catalog";
+import { catalog_entry_lookup } from "../catalog";
 
 const maxLimit = 1_000;
 
@@ -24,10 +24,10 @@ export async function GET({ locals, params, url }) {
     const nb_days = (to_ts - fr_ts) / DAY_MS;
     const resolution = nb_days <= 6 ? 'hourly' : nb_days <= 366 ? 'daily' : 'weekly';
 
-    if (!catalogDict.hasOwnProperty(params.id)) {
+    if (!catalog_entry_lookup.hasOwnProperty(params.id)) {
         return new Response(JSON.stringify({ "detail": 'unknown dataset id' }), { status: 404 });
     }
-    const d = catalogDict[params.id];
+    const d = catalog_entry_lookup[params.id];
 
     const qry = `
         select t.timestamp as t

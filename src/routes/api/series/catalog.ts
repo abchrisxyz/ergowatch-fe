@@ -1,263 +1,79 @@
-const NANO2ERG = 10 ** (-9);
+import { address_counts } from "./catalog/address_counts";
+import { exchanges } from "./catalog/exchanges";
+import { supply_by_address_type } from "./catalog/supply";
 
-interface Entry {
+/**
+ * Full entry definition, including db specific data.
+ * For backend use only.
+ */
+export interface Entry {
     id: string;
+    label: string;
     desc: string;
     table: string;
     column: string | null;
     scale?: number;
 }
 
-// Maps series id's to table/column pair
-const _catalog: Entry[] = [
-    // P2PK addresses by balance
-    {
-        id: 'cnt_p2pk_ge_0',
-        desc: 'Number of P2PK addresses',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'total'
-    },
-    {
-        id: 'cnt_p2pk_ge_0p001',
-        desc: 'Number of P2PK addresses holding at least 0.001 Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_0p001'
-    },
-    {
-        id: 'cnt_p2pk_ge_0p01',
-        desc: 'Number of P2PK addresses holding at least 0.01 Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_0p01'
-    },
-    {
-        id: 'cnt_p2pk_ge_0p1',
-        desc: 'Number of P2PK addresses holding at least 0.1 Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_0p1'
-    },
-    {
-        id: 'cnt_p2pk_ge_1',
-        desc: 'Number of P2PK addresses holding at least 1 Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_1'
-    },
-    {
-        id: 'cnt_p2pk_ge_10',
-        desc: 'Number of P2PK addresses holding at least 10 Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_10'
-    },
-    {
-        id: 'cnt_p2pk_ge_100',
-        desc: 'Number of P2PK addresses holding at least 100 Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_100'
-    },
-    {
-        id: 'cnt_p2pk_ge_1k',
-        desc: 'Number of P2PK addresses holding at least 1k Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_1k'
-    },
-    {
-        id: 'cnt_p2pk_ge_10k',
-        desc: 'Number of P2PK addresses holding at least 10k Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_10k'
-    },
-    {
-        id: 'cnt_p2pk_ge_100k',
-        desc: 'Number of P2PK addresses holding at least 100k Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_100k'
-    },
-    {
-        id: 'cnt_p2pk_ge_1m',
-        desc: 'Number of P2PK addresses holding at least 1M Erg',
-        table: 'erg.address_counts_by_balance_p2pk',
-        column: 'ge_1m'
-    },
-    // Miner contracts by balance
-    {
-        id: 'cnt_miners_ge_0',
-        desc: 'Number of miner contracts',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'total'
-    },
-    {
-        id: 'cnt_miners_ge_0p001',
-        desc: 'Number of miner contracts holding at least 0.001 Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_0p001'
-    },
-    {
-        id: 'cnt_miners_ge_0p01',
-        desc: 'Number of miner contracts holding at least 0.01 Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_0p01'
-    },
-    {
-        id: 'cnt_miners_ge_0p1',
-        desc: 'Number of miner contracts holding at least 0.1 Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_0p1'
-    },
-    {
-        id: 'cnt_miners_ge_1',
-        desc: 'Number of miner contracts holding at least 1 Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_1'
-    },
-    {
-        id: 'cnt_miners_ge_10',
-        desc: 'Number of miner contracts holding at least 10 Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_10'
-    },
-    {
-        id: 'cnt_miners_ge_100',
-        desc: 'Number of miner contracts holding at least 100 Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_100'
-    },
-    {
-        id: 'cnt_miners_ge_1k',
-        desc: 'Number of miner contracts holding at least 1k Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_1k'
-    },
-    {
-        id: 'cnt_miners_ge_10k',
-        desc: 'Number of miner contracts holding at least 10k Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_10k'
-    },
-    {
-        id: 'cnt_miners_ge_100k',
-        desc: 'Number of miner contracts holding at least 100k Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_100k'
-    },
-    {
-        id: 'cnt_miners_ge_1m',
-        desc: 'Number of miner contracts holding at least 1M Erg',
-        table: 'erg.address_counts_by_balance_miners',
-        column: 'ge_1m'
-    },
-    // Contracts by balance
-    {
-        id: 'cnt_contracts_ge_0',
-        desc: 'Number of P2S(H) contracts',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'total'
-    },
-    {
-        id: 'cnt_contracts_ge_0p001',
-        desc: 'Number of P2S(H) contracts holding at least 0.001 Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_0p001'
-    },
-    {
-        id: 'cnt_contracts_ge_0p01',
-        desc: 'Number of P2S(H) contracts holding at least 0.01 Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_0p01'
-    },
-    {
-        id: 'cnt_contracts_ge_0p1',
-        desc: 'Number of P2S(H) contracts holding at least 0.1 Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_0p1'
-    },
-    {
-        id: 'cnt_contracts_ge_1',
-        desc: 'Number of P2S(H) contracts holding at least 1 Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_1'
-    },
-    {
-        id: 'cnt_contracts_ge_10',
-        desc: 'Number of P2S(H) contracts holding at least 10 Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_10'
-    },
-    {
-        id: 'cnt_contracts_ge_100',
-        desc: 'Number of P2S(H) contracts holding at least 100 Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_100'
-    },
-    {
-        id: 'cnt_contracts_ge_1k',
-        desc: 'Number of P2S(H) contracts holding at least 1k Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_1k'
-    },
-    {
-        id: 'cnt_contracts_ge_10k',
-        desc: 'Number of P2S(H) contracts holding at least 10k Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_10k'
-    },
-    {
-        id: 'cnt_contracts_ge_100k',
-        desc: 'Number of P2S(H) contracts holding at least 100k Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_100k'
-    },
-    {
-        id: 'cnt_contracts_ge_1m',
-        desc: 'Number of P2S(H) contracts holding at least 1M Erg',
-        table: 'erg.address_counts_by_balance_contracts',
-        column: 'ge_1m'
-    },
-    // Supply by address type
-    {
-        id: 'supply_p2pks',
-        desc: 'Erg supply on P2PK addresses',
-        table: 'erg.supply_composition',
-        column: 'p2pks',
-        scale: NANO2ERG
-    },
-    {
-        id: 'supply_miners',
-        desc: 'Erg supply on miner contracts',
-        table: 'erg.supply_composition',
-        column: 'miners',
-        scale: NANO2ERG
-    },
-    {
-        id: 'supply_contracts',
-        desc: 'Erg supply on P2S(H) contracts',
-        table: 'erg.supply_composition',
-        column: 'contracts',
-        scale: NANO2ERG
-    },
-    // Supply on exchanges
-    {
-        id: 'cex_supply_main',
-        desc: 'Erg supply on exchange main addresses',
-        table: 'exchanges.supply',
-        column: 'main',
-        scale: NANO2ERG
-    },
-    {
-        id: 'cex_supply_deposits',
-        desc: 'Erg supply on exchange deposit addresses',
-        table: 'exchanges.supply',
-        column: 'deposits',
-        scale: NANO2ERG
-    },
+/**
+ * A group of related entries.
+ */
+export interface EntryGroup {
+    name: string,
+    entries: Entry[],
+}
 
-
-
-];
-
-export const catalogDict = Object.assign({}, ..._catalog.map(e => ({ [e.id]: e })));
+/**
+ * A truncated version of an Entry.
+ * 
+ * Holds describing features only and nothing relating to internal db representation.
+ * Safe to be exposed to frontend.
+ */
 export interface EntryDescription {
     id: string;
+    label: string;
     desc: string;
     scale?: number;
 }
-export const catalogDesc: EntryDescription[] = _catalog.map(e => ({ id: e.id, desc: e.desc, scale: e.scale }));
 
+/**
+ * A group of related entry descriptions.
+ */
+export interface EntryDescriptionGroup {
+    name: string,
+    entries: EntryDescription[],
+}
+
+/**
+ * Defines groups and contained entries.
+ */
+const _groups: EntryGroup[] = [
+    { name: "Addresses", entries: address_counts },
+    { name: "Exchanges", entries: exchanges },
+    { name: "Supply", entries: supply_by_address_type },
+];
+
+/**
+ * Maps individual entry ID's to entries for quick retrieval of full entry.
+ */
+export const catalog_entry_lookup: { [key: string]: Entry } = _groups.flatMap(g => g.entries).reduce((d: { [key: string]: Entry }, e) => {
+    d[e.id] = e;
+    return d;
+}, {});
+
+/**
+ * Converts entries to entry descriptions.
+ * @param entries Collection of entries to be converted
+ * @returns a Collection of entry descriptions
+ */
+function map_entries_to_descriptions(entries: Entry[]): EntryDescription[] {
+    return entries.map(e => ({ id: e.id, label: e.label, desc: e.desc, scale: e.scale }))
+}
+
+/**
+ * Grouped entry descriptions.
+ */
+export const entry_description_groups: EntryDescriptionGroup[] = _groups.map(g => ({
+    name: g.name,
+    entries: map_entries_to_descriptions(g.entries),
+}));

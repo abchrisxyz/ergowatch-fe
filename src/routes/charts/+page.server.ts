@@ -1,7 +1,7 @@
-import { catalogDesc, type EntryDescription } from '../api/series/catalog';
+import { entry_description_groups, type EntryDescriptionGroup } from '../api/series/catalog';
 
 export function load() {
     return {
-        catalog: catalogDesc as EntryDescription[]
+        catalog: entry_description_groups as EntryDescriptionGroup[]
     }
 }
