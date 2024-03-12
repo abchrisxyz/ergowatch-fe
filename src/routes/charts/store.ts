@@ -18,7 +18,7 @@ const initialOpts = {
             time: true
         }
     },
-    axes: [{}, { size: 70 }],
+    axes: [{}, { size: 80 }],
     series: [
         {
         },
