@@ -8,8 +8,9 @@ import { supply_by_address_type } from "./catalog/supply";
  */
 export interface Entry {
     id: string;
-    label: string;
+    name: string;
     desc: string;
+    ylabel: string;
     table: string;
     column: string | null;
     scale?: number;
@@ -31,8 +32,9 @@ export interface EntryGroup {
  */
 export interface EntryDescription {
     id: string;
-    label: string;
+    name: string;
     desc: string;
+    ylabel: string;
     scale?: number;
 }
 
@@ -67,7 +69,7 @@ export const catalog_entry_lookup: { [key: string]: Entry } = _groups.flatMap(g 
  * @returns a Collection of entry descriptions
  */
 function map_entries_to_descriptions(entries: Entry[]): EntryDescription[] {
-    return entries.map(e => ({ id: e.id, label: e.label, desc: e.desc, scale: e.scale }))
+    return entries.map(e => ({ id: e.id, name: e.name, desc: e.desc, ylabel: e.ylabel, scale: e.scale }))
 }
 
 /**

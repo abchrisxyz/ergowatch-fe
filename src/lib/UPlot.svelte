@@ -60,6 +60,15 @@
 	}
 	$: refresh(data);
 
+	// Handle specific opts changes
+	function handle_opts_changes(opts: any) {
+		if (ref === undefined) return;
+		// Update y-axis labels
+		console.log('updating y label: ', opts.axes[1]);
+		uplotHandle.axes[1].label = opts.axes[1].label;
+	}
+	$: handle_opts_changes(opts);
+
 	function resize() {
 		if (uplotHandle.width === width) return;
 		const size = { width: width, height: uplotHandle.height };

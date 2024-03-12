@@ -37,10 +37,10 @@
 		justify-content: center;
 	}
 	.time-windows button.selected {
-		color: var(--text-color-1);
+		color: var(--text-color-focus);
 	}
 	.time-windows button:hover {
-		color: var(--text-color-focus);
+		color: var(--text-color-1);
 	}
 	/* @media (min-width: 840px) {
 		.settings {

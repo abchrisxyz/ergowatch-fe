@@ -22,7 +22,7 @@ export async function GET({ locals, params, url }) {
     const fr_ts = Number(fr);
     const to_ts = to === null ? Date.now() : Number(to);
     const nb_days = (to_ts - fr_ts) / DAY_MS;
-    const resolution = nb_days <= 6 ? 'hourly' : nb_days <= 366 ? 'daily' : 'weekly';
+    const resolution = nb_days <= 30.1 ? 'hourly' : nb_days <= 366 ? 'daily' : 'weekly';
 
     if (!catalog_entry_lookup.hasOwnProperty(params.id)) {
         return new Response(JSON.stringify({ "detail": 'unknown dataset id' }), { status: 404 });

@@ -31,78 +31,89 @@ function generate_entries(variant: AddressType): Entry[] {
     return [
         {
             id: `cnt_${id_key}_ge_0`,
-            label: `${name} with a non-zero balance`,
+            name: `${name} with a non-zero balance`,
             desc: `${name} with a non-zero balance`,
+            ylabel: 'Addresses',
             table: table,
             column: 'total'
         },
         {
             id: `cnt_${id_key}_ge_0p001`,
-            label: `${name} with ≥ 0.001 Erg`,
-            desc: `${name} with ≥ 0.001 Erg`,
+            name: `${name} with ≥ 0.001 ERG`,
+            desc: `${name} with ≥ 0.001 ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_0p001'
         },
         {
             id: `cnt_${id_key}_ge_0p01`,
-            label: `${name} with ≥ 0.01 Erg`,
-            desc: `${name} with ≥ 0.01 Erg`,
+            name: `${name} with ≥ 0.01 ERG`,
+            desc: `${name} with ≥ 0.01 ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_0p01'
         },
         {
             id: `cnt_${id_key}_ge_0p1`,
-            label: `${name} with ≥ 0.1 Erg`,
-            desc: `${name} with ≥ 0.1 Erg`,
+            name: `${name} with ≥ 0.1 ERG`,
+            desc: `${name} with ≥ 0.1 ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_0p1'
         },
         {
             id: `cnt_${id_key}_ge_1`,
-            label: `${name} with ≥ 1 Erg`,
-            desc: `${name} with ≥ 1 Erg`,
+            name: `${name} with ≥ 1 ERG`,
+            desc: `${name} with ≥ 1 ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_1'
         },
         {
             id: `cnt_${id_key}_ge_10`,
-            label: `${name} with ≥ 10 Erg`,
-            desc: `${name} with ≥ 10 Erg`,
+            name: `${name} with ≥ 10 ERG`,
+            desc: `${name} with ≥ 10 ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_10'
         },
         {
             id: `cnt_${id_key}_ge_100`,
-            label: `${name} with ≥ 100 Erg`,
-            desc: `${name} with ≥ 100 Erg`,
+            name: `${name} with ≥ 100 ERG`,
+            desc: `${name} with ≥ 100 ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_100'
         },
         {
             id: `cnt_${id_key}_ge_1k`,
-            label: `${name} with ≥ 1k Erg`,
-            desc: `${name} with ≥ 1k Erg`,
+            name: `${name} with ≥ 1k ERG`,
+            desc: `${name} with ≥ 1k ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_1k'
         },
         {
             id: `cnt_${id_key}_ge_10k`,
-            label: `${name} with ≥ 10k Erg`,
-            desc: `${name} with ≥ 10k Erg`,
+            name: `${name} with ≥ 10k ERG`,
+            desc: `${name} with ≥ 10k ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_10k'
         },
         {
             id: `cnt_${id_key}_ge_100k`,
-            label: `${name} with ≥ 100k Erg`,
-            desc: `${name} with ≥ 100k Erg`,
+            name: `${name} with ≥ 100k ERG`,
+            desc: `${name} with ≥ 100k ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_100k'
         },
         {
             id: `cnt_${id_key}_ge_1m`,
-            label: `${name} with ≥ 1M Erg`,
-            desc: `${name} with ≥ 1M Erg`,
+            name: `${name} with ≥ 1M ERG`,
+            desc: `${name} with ≥ 1M ERG`,
+            ylabel: 'Addresses',
             table: table,
             column: 'ge_1m'
         }

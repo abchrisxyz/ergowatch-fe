@@ -7,7 +7,7 @@ type TimeRange = { fr: Timestamp, to: Timestamp };
 let isInitial = true;
 let initialTimeWindowId = "1m";
 const initialData = {
-    seriesIds: ["dummy"],
+    seriesIds: ["placeholder"],
     timestamps: [1600000000],
     values: [[0]],
 };
@@ -18,12 +18,12 @@ const initialOpts = {
             time: true
         }
     },
-    axes: [{}, { size: 80 }],
+    axes: [{}, { size: 80, label: "", labelSize: 16, labelGap: 5 }],
     series: [
         {
         },
         {
-            stroke: () => get(theme).dark ? 'red' : 'blue',
+            stroke: () => get(theme).dark ? 'hsl(0, 0%, 78%)' : 'hsl(0, 0%, 18%)',
         }
     ],
     cursor: {
@@ -70,7 +70,7 @@ export async function setTimeWindow(newTimeWindowId: string) {
 }
 
 
-export async function setSeries(seriesId: string, seriesIndex: number, scale: number | undefined) {
+export async function setSeries(seriesId: string, seriesIndex: number, ylabel: string, scale: number | undefined) {
     readyStore.set(false);
 
     let timeWindowId = get(timeWindowStore);
@@ -78,6 +78,12 @@ export async function setSeries(seriesId: string, seriesIndex: number, scale: nu
     const seriesData = await fetchSeries(seriesId, timeRange);
     if (seriesData === null) return;
     const [timestamps, values] = seriesData;
+
+    optsStore.update((curr: any) => {
+        let opts = Object(curr)
+        opts.axes[1] = { ...curr.axes[1], label: ylabel };
+        return opts;
+    });
 
     dataStore.update((curr) => {
         let numberOfSeries = curr.values.length;
@@ -88,7 +94,6 @@ export async function setSeries(seriesId: string, seriesIndex: number, scale: nu
             if (scale === undefined) {
                 curr.values = [values];
             } else {
-                console.log("scale:", scale);
                 curr.values = [values.map(v => v * scale)]
             }
 

@@ -27,9 +27,9 @@
 		{#each group.entries as entry}
 			<button
 				class:selected={entry.id === seriesIds[0]}
-				on:click={() => setSeries(entry.id, 0, entry.scale)}
+				on:click={() => setSeries(entry.id, 0, entry.ylabel, entry.scale)}
 			>
-				{entry.label}
+				{entry.name}
 			</button>
 		{/each}
 	</div>
@@ -41,14 +41,14 @@
 	}
 	.header {
 		padding: 0;
+		margin: 0;
 	}
+
 	.header > button.toggler {
 		display: flex;
 		align-items: center;
 		border: none;
 		background-color: inherit;
-		margin-top: 1px;
-		margin-bottom: -1px;
 	}
 	.header > button.toggler:hover {
 		cursor: pointer;
@@ -57,6 +57,7 @@
 		color: var(--text-color-2);
 		width: var(--icon-width);
 		text-align: left;
+		line-height: 0.5em;
 	}
 	.entries.collapsed {
 		display: none;
@@ -66,12 +67,20 @@
 		color: inherit;
 		border: none;
 		display: block;
-		padding: 0.5em 0em;
-		/* padding-top: 1em; */
+		padding-top: 0.75em;
+		padding-bottom: 0.75em;
 		margin-left: var(--icon-width);
+		padding-left: 1em;
 		color: var(--text-color-2);
 	}
-	.entries > button.selected {
+	.entries > button:first-child {
+		margin-top: 0.75em;
+	}
+	.entries > button:last-child {
+		padding-bottom: 0;
+	}
+	.entries > button.selected,
+	.entries > button.selected:hover {
 		color: var(--text-color-focus);
 	}
 	.entries > button:hover {
