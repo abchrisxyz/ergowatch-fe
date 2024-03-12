@@ -63,7 +63,9 @@ function getTimeWindowRange(timeWindowId: string): TimeRange {
 export async function setTimeWindow(newTimeWindowId: string) {
     if (newTimeWindowId === get(timeWindowStore)) return;
     timeWindowStore.update(() => newTimeWindowId);
-    await refreshSeries(newTimeWindowId);
+    if (!isInitial) {
+        await refreshSeries(newTimeWindowId);
+    }
 
 }
 
