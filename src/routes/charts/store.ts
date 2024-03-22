@@ -1,4 +1,5 @@
 import { writable, get, type Writable } from "svelte/store";
+import { type Dataset } from "../api/series/catalog";
 import { theme } from "../theme";
 
 type Timestamp = number | undefined;
@@ -7,7 +8,7 @@ type TimeRange = { fr: Timestamp, to: Timestamp };
 let isInitial = true;
 let initialTimeWindowId = "1m";
 const initialData = {
-    seriesIds: ["placeholder"],
+    datasets: [] as Dataset[],
     timestamps: [1600000000],
     values: [[0]],
 };
@@ -70,18 +71,18 @@ export async function setTimeWindow(newTimeWindowId: string) {
 }
 
 
-export async function setSeries(seriesId: string, seriesIndex: number, ylabel: string, scale: number | undefined) {
+export async function setSeries(dataset: Dataset, seriesIndex: number) {
     readyStore.set(false);
 
     let timeWindowId = get(timeWindowStore);
     let timeRange = getTimeWindowRange(timeWindowId);
-    const seriesData = await fetchSeries(seriesId, timeRange);
+    const seriesData = await fetchSeries(dataset.id, timeRange);
     if (seriesData === null) return;
     const [timestamps, values] = seriesData;
 
     optsStore.update((curr: any) => {
         let opts = Object(curr)
-        opts.axes[1] = { ...curr.axes[1], label: ylabel };
+        opts.axes[1] = { ...curr.axes[1], label: dataset.ylabel };
         return opts;
     });
 
@@ -89,11 +90,12 @@ export async function setSeries(seriesId: string, seriesIndex: number, ylabel: s
         let numberOfSeries = curr.values.length;
         if (numberOfSeries === 1) {
             // Only one existing series, can overwrite it all
-            curr.seriesIds = [seriesId];
+            curr.datasets = [dataset];
             curr.timestamps = timestamps;
-            if (scale === undefined) {
+            if (dataset.scale === undefined) {
                 curr.values = [values];
             } else {
+                const scale = dataset.scale;
                 curr.values = [values.map(v => v * scale)]
             }
 
@@ -101,11 +103,11 @@ export async function setSeries(seriesId: string, seriesIndex: number, ylabel: s
         else {
             if (seriesIndex < numberOfSeries) {
                 // Replace existing series
-                curr.seriesIds[seriesIndex] = seriesId;
+                curr.datasets[seriesIndex] = dataset;
                 curr.values[seriesIndex] = values;
             } else {
                 // Appending new series
-                curr.seriesIds.push(seriesId);
+                curr.datasets.push(dataset);
                 curr.values.push(values);
             }
             if (!isInitial) {
@@ -155,8 +157,8 @@ async function refreshSeries(timeWindowId: string) {
     const timeRange = getTimeWindowRange(timeWindowId);
     let timestamps: number[];
     let values: number[][] = [];
-    for (const [i, seriesId] of ds.seriesIds.entries()) {
-        const seriesData = await fetchSeries(seriesId, timeRange)
+    for (const [i, dataset] of ds.datasets.entries()) {
+        const seriesData = await fetchSeries(dataset.id, timeRange)
         if (seriesData) {
             if (i === 0) {
                 timestamps = seriesData[0];

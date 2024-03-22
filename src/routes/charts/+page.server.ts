@@ -1,7 +1,7 @@
-import { entry_description_groups, type EntryDescriptionGroup } from '../api/series/catalog';
+import { datasetGroups, type DatasetGroup } from '../api/series/catalog';
 
 export function load() {
     return {
-        catalog: entry_description_groups as EntryDescriptionGroup[]
+        catalog: datasetGroups as DatasetGroup[]
     }
 }

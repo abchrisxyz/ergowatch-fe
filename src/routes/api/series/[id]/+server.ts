@@ -27,12 +27,12 @@ export async function GET({ locals, params, url }) {
     if (!catalog_entry_lookup.hasOwnProperty(params.id)) {
         return new Response(JSON.stringify({ "detail": 'unknown dataset id' }), { status: 404 });
     }
-    const d = catalog_entry_lookup[params.id];
+    const { source } = catalog_entry_lookup[params.id];
 
     const qry = `
         select t.timestamp as t
-            , d.${d.column} as v
-        from ${d.table} d
+            , d.${source.column} as v
+        from ${source.table} d
         join timestamps.${resolution} t on d.height = t.height
         where t.timestamp >= $1
         order by 1;

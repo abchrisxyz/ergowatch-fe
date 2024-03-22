@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { ChevronRightIcon, ChevronDownIcon } from 'svelte-feather-icons';
-	import { type EntryDescriptionGroup } from '../api/series/catalog';
+	import { type DatasetGroup } from '../api/series/catalog';
 	import { setSeries, dataStore } from './store';
 
-	export let group: EntryDescriptionGroup;
+	export let group: DatasetGroup;
 
-	$: seriesIds = $dataStore.seriesIds;
+	$: seriesIds = $dataStore.datasets.map((ds) => ds.id);
 
 	let collapsed = true;
 </script>
@@ -24,12 +24,9 @@
 		</button>
 	</div>
 	<div class="entries" class:collapsed>
-		{#each group.entries as entry}
-			<button
-				class:selected={entry.id === seriesIds[0]}
-				on:click={() => setSeries(entry.id, 0, entry.ylabel, entry.scale)}
-			>
-				{entry.name}
+		{#each group.datasets as ds}
+			<button class:selected={ds.id === seriesIds[0]} on:click={() => setSeries(ds, 0)}>
+				{ds.name}
 			</button>
 		{/each}
 	</div>
