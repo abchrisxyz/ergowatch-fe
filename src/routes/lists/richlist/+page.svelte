@@ -15,7 +15,7 @@
 				<th>Mean Supply Origin</th>
 			</tr>
 			{#each data.balances as bal, i}
-				<tr>
+				<tr class="mono">
 					<td>{i + 1}</td>
 					<td>{bal.address.slice(0, 8)}</td>
 					<td><Nano amount={bal.balance} /></td>
@@ -51,5 +51,10 @@
 	th:first-child,
 	td:first-child {
 		text-align: start;
+	}
+	.mono {
+		font-family: monospace;
+		font-size: 0.95em;
+		font-weight: lighter;
 	}
 </style>
