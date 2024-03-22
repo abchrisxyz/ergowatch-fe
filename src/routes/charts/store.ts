@@ -70,15 +70,12 @@ export async function setTimeWindow(newTimeWindowId: string) {
 
 }
 
-
 export async function setSeries(dataset: Dataset, seriesIndex: number) {
     readyStore.set(false);
 
     let timeWindowId = get(timeWindowStore);
     let timeRange = getTimeWindowRange(timeWindowId);
-    const seriesData = await fetchSeries(dataset.id, timeRange);
-    if (seriesData === null) return;
-    const [timestamps, values] = seriesData;
+    const [timestamps, values] = await prepareSeries(dataset, timeRange);
 
     optsStore.update((curr: any) => {
         let opts = Object(curr)
@@ -92,13 +89,7 @@ export async function setSeries(dataset: Dataset, seriesIndex: number) {
             // Only one existing series, can overwrite it all
             curr.datasets = [dataset];
             curr.timestamps = timestamps;
-            if (dataset.scale === undefined) {
-                curr.values = [values];
-            } else {
-                const scale = dataset.scale;
-                curr.values = [values.map(v => v * scale)]
-            }
-
+            curr.values = [values];
         }
         else {
             if (seriesIndex < numberOfSeries) {
@@ -121,6 +112,32 @@ export async function setSeries(dataset: Dataset, seriesIndex: number) {
         isInitial = false;
     }
     readyStore.set(true);
+
+}
+
+/**
+ * Fetch series and apply options.
+ * 
+ * @param dataset Dataset to retrieve data for
+ * @param timeRange time range to retrieve data for
+ * @returns timestamp and value arrays
+ */
+async function prepareSeries(dataset: Dataset, timeRange: TimeRange) {
+    let seriesData = await fetchSeries(dataset.id, timeRange);
+    if (seriesData === null) {
+        console.warn("No data for dataset", dataset.id);
+        return [[], []];
+    }
+
+    // Unpack data
+    let [timestamps, values] = seriesData;
+
+    // Apply scale
+    if (dataset.scale !== undefined) {
+        values = values.map(v => v * dataset!.scale!)
+    }
+
+    return [timestamps, values]
 
 }
 
@@ -158,7 +175,7 @@ async function refreshSeries(timeWindowId: string) {
     let timestamps: number[];
     let values: number[][] = [];
     for (const [i, dataset] of ds.datasets.entries()) {
-        const seriesData = await fetchSeries(dataset.id, timeRange)
+        const seriesData = await prepareSeries(dataset, timeRange)
         if (seriesData) {
             if (i === 0) {
                 timestamps = seriesData[0];
