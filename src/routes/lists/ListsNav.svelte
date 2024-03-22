@@ -30,12 +30,6 @@
 				<div class="description">Addresses with highest Erg balance</div>
 			</div>
 		</NavLink>
-		<NavLink href="/lists/someother" {onNavLinkClick}>
-			<div class="dashboard-link">
-				<div>By transactions</div>
-				<div class="description">...</div>
-			</div>
-		</NavLink>
 	</nav>
 </div>
 
