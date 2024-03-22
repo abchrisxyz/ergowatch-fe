@@ -33,6 +33,7 @@
 	"type": "module",
 	"dependencies": {
 		"pg": "^8.11.3",
+		"svelte-bootstrap-icons": "^3.1.1",
 		"svelte-feather-icons": "^4.0.1",
 		"uplot": "^1.6.26"
 	}

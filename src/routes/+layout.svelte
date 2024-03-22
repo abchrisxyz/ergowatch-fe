@@ -2,6 +2,7 @@
 	import './styles.css';
 	import './theme.css';
 	import { MoonIcon, SunIcon, MenuIcon } from 'svelte-feather-icons';
+	import { Github, Twitter } from 'svelte-bootstrap-icons';
 	import NavLink from './NavLink.svelte';
 	import ErgoWatchLogo from '$lib/ErgoWatchLogo.svelte';
 
@@ -40,11 +41,10 @@
 			<NavLink href="/dashboards" {onNavLinkClick}>Dashboards</NavLink>
 			<NavLink href="/charts" {onNavLinkClick}>Charts</NavLink>
 			<NavLink href="/lists" {onNavLinkClick}>Lists</NavLink>
-			<NavLink href="/tools" {onNavLinkClick}>Tools</NavLink>
+			<!-- <NavLink href="/tools" {onNavLinkClick}>Tools</NavLink> -->
 		</div>
 		<div class="nav-group">
 			<NavLink href="/sync" {onNavLinkClick}>Sync</NavLink>
-			<NavLink href="/api" {onNavLinkClick}>API</NavLink>
 			<NavLink href="/about" {onNavLinkClick}>About</NavLink>
 			<div class="theme-switch">
 				<button type="button" on:click={toggleTheme}>
@@ -62,8 +62,15 @@
 		<slot />
 	</main>
 	<footer>
-		<div>Node</div>
-		<div>Tips</div>
+		<div class="group">
+			<div>&copy; 2021-2024 ergo.watch</div>
+		</div>
+		<div class="group">
+			<a href="https://api.ergo.watch/docs">API</a>
+			<a href="https://node.ergo.watch">Node</a>
+			<a href="https://github.com/abchrisxyz/ergowatch"><Github width={18} height={18} /></a>
+			<a href="https://twitter.com/ErgoWatch"><Twitter width={18} height={18} /></a>
+		</div>
 	</footer>
 </div>
 
@@ -133,7 +140,16 @@
 		padding: var(--margin);
 		display: flex;
 		column-gap: var(--margin);
-		justify-content: center;
+		justify-content: space-between;
+		align-items: center;
+	}
+	footer .group {
+		display: flex;
+		column-gap: 1em;
+	}
+	footer a {
+		text-decoration: none;
+		color: var(--text-color);
 	}
 	header button,
 	nav button {
@@ -165,6 +181,9 @@
 			column-gap: 1.5em;
 			align-items: center;
 			margin: 0;
+		}
+		footer .group {
+			column-gap: 2em;
 		}
 	}
 </style>
