@@ -27,7 +27,7 @@
 		<NavLink href="/lists/richlist" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>By balance</div>
-				<div class="description">Addresses with highest Erg balances</div>
+				<div class="description">Addresses with highest Erg balance</div>
 			</div>
 		</NavLink>
 		<NavLink href="/lists/someother" {onNavLinkClick}>
