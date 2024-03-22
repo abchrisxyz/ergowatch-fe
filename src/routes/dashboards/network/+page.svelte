@@ -81,8 +81,6 @@
 	$: latest_proposals = data.latest_proposals
 		.map((p) => expand_proposal(p, current_epoch_height))
 		.flat();
-
-	$: console.log(data.height, blocks_left_in_epoch);
 </script>
 
 <Dashboard title="Network">
