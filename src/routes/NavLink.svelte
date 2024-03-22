@@ -10,7 +10,7 @@
 
 <style>
 	.link:hover {
-		color: var(--text-color-focus);
+		color: var(--text-color-1);
 		cursor: pointer;
 	}
 	.link.active {
