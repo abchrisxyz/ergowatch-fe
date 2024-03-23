@@ -7,3 +7,4 @@
 !/package*.json
 !/svelte.config.js
 !/vite.config.ts
+!/revision.gen.js
