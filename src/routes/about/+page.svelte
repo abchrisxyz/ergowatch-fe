@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { version } from '$app/environment';
+</script>
+
 <div class="container">
 	<h2>About</h2>
 	<p>
@@ -10,6 +14,8 @@
 		> algorithmic stable coin that had just launched. From there, it evolved to track other aspects of
 		Ergo.
 	</p>
+	<br />
+	<p>Client revision: {version.substring(0, 7)}</p>
 </div>
 
 <style>
