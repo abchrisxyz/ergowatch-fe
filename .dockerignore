@@ -8,3 +8,4 @@
 !/svelte.config.js
 !/vite.config.ts
 !/revision.gen.js
+!/.env
