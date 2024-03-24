@@ -41,7 +41,7 @@
 		</NumberWidget>
 	</NumberGroup>
 	<!-- <Widget title="Revenue">Total vs fees revenue over last 24h</Widget> -->
-	<Widget title="Hash Rate">
+	<Widget title="Hash Rate (last 10 days)">
 		<HashRateChart ts={data.hash_rate.ts} hps={data.hash_rate.hps} />
 	</Widget>
 	<Widget title="Miner distribution (last 1000 blocks)">
