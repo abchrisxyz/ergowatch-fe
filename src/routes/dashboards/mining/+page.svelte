@@ -44,7 +44,7 @@
 	<Widget title="Hash Rate">
 		<HashRateChart ts={data.hash_rate.ts} hps={data.hash_rate.hps} />
 	</Widget>
-	<Widget title="Miner distribution">
+	<Widget title="Miner distribution (last 1000 blocks)">
 		<TableWidget template="max-content minmax(max-content, 1fr) minmax(max-content, 1fr)">
 			<TableWidgetHeader>
 				<TableWidgetCell right={true}>#</TableWidgetCell>
