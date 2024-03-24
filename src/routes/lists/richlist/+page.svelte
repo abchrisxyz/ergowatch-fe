@@ -30,9 +30,9 @@
 	.wrapper {
 		background-color: var(--surface-color-2);
 		min-height: 100%;
+		overflow-x: auto;
 	}
 	table {
-		/* min-width: 100%; */
 		white-space: nowrap;
 		border-collapse: collapse;
 	}
