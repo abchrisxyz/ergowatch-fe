@@ -70,5 +70,5 @@
 			{/each}
 		</TableWidget>
 	</Widget>
-	<Widget title="Normalized mining rewards">chart</Widget>
+	<!-- <Widget title="Normalized mining rewards">chart</Widget> -->
 </Dashboard>
