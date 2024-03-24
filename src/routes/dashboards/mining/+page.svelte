@@ -64,7 +64,7 @@
 						</span>
 					</TableWidgetCell>
 					<TableWidgetCell right={true}>
-						{Number(m.prc).toFixed(1)}
+						{Number(m.prc).toFixed(2)}
 					</TableWidgetCell>
 				</TableWidgetRow>
 			{/each}
