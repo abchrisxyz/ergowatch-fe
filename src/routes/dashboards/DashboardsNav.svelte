@@ -43,7 +43,7 @@
 			</div>
 		</NavLink>
 
-		<div class="category">Metrics</div>
+		<div class="category">ERG</div>
 		<NavLink href="/dashboards/addresses" {onNavLinkClick}>
 			<div class="dashboard-link">
 				<div>Addresses</div>
