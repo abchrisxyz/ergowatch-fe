@@ -5,7 +5,7 @@
 <div class="container">
 	<h2>About</h2>
 	<p>
-		ErgoWatch is a data-aggragation tool for the <a href="https://ergoplatform.org/">Ergo</a> blockchain.
+		ErgoWatch is a data aggragation tool for the <a href="https://ergoplatform.org/">Ergo</a> blockchain.
 	</p>
 	<br />
 	<p>
@@ -15,7 +15,7 @@
 		Ergo.
 	</p>
 	<br />
-	<p>Client revision: {version.substring(0, 7)}</p>
+	<p>App revision: {version.substring(0, 7)}</p>
 </div>
 
 <style>
