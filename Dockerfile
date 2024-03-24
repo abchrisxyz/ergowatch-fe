@@ -12,5 +12,7 @@ COPY --from=build /app/release /app
 RUN ls
 RUN npm ci --omit dev  
 USER node:node
-EXPOSE 80
+# https://kit.svelte.dev/docs/adapter-node#environment-variables-port-and-host
+ENV PORT=3000
+EXPOSE ${PORT}
 CMD ["node","build"]
