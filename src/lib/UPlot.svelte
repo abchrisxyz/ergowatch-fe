@@ -64,7 +64,6 @@
 	function handle_opts_changes(opts: any) {
 		if (ref === undefined) return;
 		// Update y-axis labels
-		console.log('updating y label: ', opts.axes[1]);
 		uplotHandle.axes[1].label = opts.axes[1].label;
 	}
 	$: handle_opts_changes(opts);
