@@ -12,8 +12,14 @@
 		.then((res) => (data = res));
 </script>
 
-<h2>Sync heights</h2>
 <div class="container">
+	<h2>Sync heights</h2>
+	<div class="description">
+		<p>
+			Shows the last synced height of each ErgoWatch worker. When operating normally, all workers
+			will be at the same height: the latest block.
+		</p>
+	</div>
 	{#if data}
 		<div class="workers">
 			{#each data.workers as worker}
@@ -30,10 +36,18 @@
 <style>
 	.container {
 		/* margin: auto; */
-		width: max-content;
-		border: 1px solid var(--border);
-		border-radius: 5px;
-		padding: var(--margin);
+		/* width: max-content; */
+		/* border: 1px solid var(--border); */
+		/* border-radius: 5px; */
+		/* padding: var(--margin); */
+		margin: auto;
+		max-width: 600px;
+	}
+	p {
+		padding-bottom: 0.25em;
+	}
+	.description {
+		margin-bottom: 2em;
 	}
 	.workers {
 		display: flex;
