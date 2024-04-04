@@ -79,11 +79,12 @@
 		display: grid;
 		min-height: 100vh;
 		grid-template-columns: 100vw;
-		grid-template-rows: max-content minmax(calc(100% - 64px), max-content) max-content;
+		grid-template-rows: max-content 1fr 0;
 		grid-template-areas:
 			'header'
 			'main'
 			'footer';
+		min-height: 100vh;
 	}
 	:global(.burger-menu) .layout {
 		grid-template-rows: max-content 1fr;
@@ -142,6 +143,7 @@
 		column-gap: var(--margin);
 		justify-content: space-between;
 		align-items: center;
+		height: min-content; /* compensate the 0 in grid-template-rows */
 	}
 	footer .group {
 		display: flex;
