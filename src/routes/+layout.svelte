@@ -2,7 +2,7 @@
 	import './styles.css';
 	import './theme.css';
 	import { MoonIcon, SunIcon, MenuIcon } from 'svelte-feather-icons';
-	import { Github, Twitter } from 'svelte-bootstrap-icons';
+	import { Github, TwitterX } from 'svelte-bootstrap-icons';
 	import NavLink from './NavLink.svelte';
 	import ErgoWatchLogo from '$lib/ErgoWatchLogo.svelte';
 
@@ -69,7 +69,7 @@
 			<a href="https://api.ergo.watch/docs">API</a>
 			<a href="https://node.ergo.watch">Node</a>
 			<a href="https://github.com/abchrisxyz/ergowatch"><Github width={18} height={18} /></a>
-			<a href="https://twitter.com/ErgoWatch"><Twitter width={18} height={18} /></a>
+			<a href="https://twitter.com/ErgoWatch"><TwitterX width={18} height={18} /></a>
 		</div>
 	</footer>
 </div>
